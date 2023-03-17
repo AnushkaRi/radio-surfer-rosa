@@ -6,16 +6,24 @@ import Login from "./components/Login/Login";
 import Redirect from "./components/Redirect/Redirect";
 import Home from "./components/Home/Home";
 import "./index.css";
+import Layout from "./components/Layout/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Login />,
   },
+
   {
-    path: "/home",
-    element: <Home />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ],
   },
+
   {
     path: "/redirect",
     element: <Redirect />,

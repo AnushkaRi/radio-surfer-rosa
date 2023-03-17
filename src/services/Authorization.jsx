@@ -1,6 +1,6 @@
 export function authorize() {
   const CLIENT_ID = "ed7f005131574da1bc47a1162a969b09";
-  const REDIRECT_URI = "http://127.0.0.1:5174/redirect";
+  const REDIRECT_URI = "http://127.0.0.1:5173/redirect";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
   const scope = ["user-top-read", "user-read-recently-played"];

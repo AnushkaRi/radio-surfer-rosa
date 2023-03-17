@@ -1,0 +1,4 @@
+.home_container {
+  grid-area: home;
+  background: yellow;
+}
