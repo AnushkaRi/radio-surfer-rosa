@@ -8,8 +8,32 @@
 .header {
   font-size: 2rem;
   font-weight: 700;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
-.sections {
+.header span {
+  color: rgb(254, 0, 173);
+}
+
+.sections ul {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  list-style-type: none;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 10px;
+}
+
+.sections li {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+li:hover {
+  color: rgb(254, 0, 173);
 }

@@ -9,7 +9,7 @@ const Redirect = () => {
 
   useEffect(() => {
     const hash = window.location.hash;
-    const token = hash
+    let token = hash
       .substring(1)
       .split("&")
       .find((elem) => elem.startsWith("access_token"))

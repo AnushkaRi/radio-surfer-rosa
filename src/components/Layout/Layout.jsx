@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 import Sidebar from "../Sidebar/Sidebar";
 import Header from "../Header/Header";
-import Home from "../Home/Home";
+import Home from "../../pages/Home/Home";
 import Footer from "../Footer/Footer";
 
 const Layout = () => {
