@@ -1,36 +1,28 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
-import style from "./styles.module.css";
+import Login from "../Login/Login";
+import Layout from "../../components/Layout/Layout";
+import { setClientToken } from "../../services/Authorization";
 
 const Redirect = () => {
   const [token, setToken] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
+    const token = window.localStorage.getItem("token");
     const hash = window.location.hash;
-    let token = hash
-      .substring(1)
-      .split("&")
-      .find((elem) => elem.startsWith("access_token"))
-      .split("=")[1];
+    window.location.hash = "";
 
-    if (token) {
-      window.location.hash = "";
-      window.localStorage.setItem("token", token);
-      navigate("/home");
+    if (!token && hash) {
+      const _token = hash.split("&")[0].split("=")[1];
+      window.localStorage.setItem("token", _token);
+      setToken(_token);
+      setClientToken(_token);
     } else {
-      navigate("/");
+      setToken(token);
+      setClientToken(token);
     }
-    setToken(token);
     console.log(token);
   }, []);
 
-  return (
-    <div className={style.redirect_container}>
-      <div className={style.message}>Redirecting to Radio Surfer Rosa!</div>
-    </div>
-  );
+  return !token ? <Login /> : <Layout />;
 };
-
 export default Redirect;

@@ -18,7 +18,6 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/home",
         element: <Home />,
       },
     ],
@@ -35,3 +34,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 );
+
+// Refresh Token
+// when entering Layout in URL is written: http://127.0.0.1:5173/redirect#

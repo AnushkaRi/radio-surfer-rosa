@@ -2,7 +2,7 @@ import { MdHomeFilled, MdSearch, MdWaves } from "react-icons/md";
 import { IoLibrary } from "react-icons/io5";
 
 import styles from "./styles.module.css";
-import Playlist from "../Playlist/Playlist";
+import Playlists from "../Playlists/Playlists";
 
 const Sidebar = () => {
   return (
@@ -29,7 +29,7 @@ const Sidebar = () => {
           </li>
         </ul>
       </div>
-      <Playlist />
+      <Playlists />
     </div>
   );
 };

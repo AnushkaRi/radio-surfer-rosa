@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export function authorize() {
   const CLIENT_ID = "ed7f005131574da1bc47a1162a969b09";
   const REDIRECT_URI = "http://127.0.0.1:5173/redirect";
@@ -8,3 +10,16 @@ export function authorize() {
     " ",
   )}&response_type=${RESPONSE_TYPE}&show_dialog=true`;
 }
+
+const apiClient = axios.create({
+  baseURL: "https://api.spotify.com/v1/",
+});
+
+export const setClientToken = (token) => {
+  apiClient.interceptors.request.use(async function (config) {
+    config.headers.Authorization = "Bearer" + token;
+    return config;
+  });
+};
+
+export default apiClient;
