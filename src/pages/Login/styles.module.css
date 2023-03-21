@@ -6,16 +6,19 @@
 }
 
 .header {
-  color: rgb(254, 0, 173);
   font-size: 7rem;
   font-weight: 800;
   margin-bottom: 50px;
 }
 
+.header span {
+  color: rgb(254, 0, 173);
+}
+
 .btn_login {
   font-size: 2.5rem;
-  border: 4px solid rgb(254, 0, 173);
-  color: rgb(254, 0, 173);
+  border: 4px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
   text-align: center;
   background: transparent;
   padding: 10px 30px;

@@ -5,7 +5,9 @@ import style from "./styles.module.css";
 const Login = () => {
   return (
     <div className={style.login_container}>
-      <div className={style.header}>Radio Surfer Rosa</div>
+      <div className={style.header}>
+        Radio <span>Surfer Rosa</span>
+      </div>
       <button className={style.btn_login} onClick={authorize}>
         Login
       </button>

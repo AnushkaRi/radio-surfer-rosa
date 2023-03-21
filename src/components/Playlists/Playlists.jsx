@@ -1,37 +1,27 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 
+import apiClient from "../../services/Authorization";
 import styles from "./styles.module.css";
 
 const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
 
 const Playlists = () => {
-  const [token, setToken] = useState("");
-  const [data, setData] = useState({});
+  const [playlists, setPlaylists] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
-      setToken(localStorage.getItem("token"));
-    }
-
-    /*  const getPlaylistsData = () => {
-      axios
-        .get(PLAYLISTS_ENDPOINT, {
-          headers: {
-            Authorization: "Bearer" + token,
-          },
-        })
-        .then((response) => {
-          setData(response.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    getPlaylistsData(); */
+    apiClient.get("me/playlists").then((response) => {
+      setPlaylists(response.data.items);
+      console.log(response.data.items);
+    });
   }, []);
 
-  return <div className={styles.playlist_container}>Playlists</div>;
+  return (
+    <ul className={styles.playlists_container}>
+      {playlists?.map((playlist) => (
+        <li>{playlist.name}</li>
+      ))}
+    </ul>
+  );
 };
 
 export default Playlists;
