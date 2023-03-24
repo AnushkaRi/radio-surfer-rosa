@@ -1,8 +1,8 @@
 import styles from "./styles.module.css";
-import Sidebar from "../Sidebar/Sidebar";
-import Header from "../Header/Header";
-import Home from "../../pages/Home/Home";
-import Footer from "../Footer/Footer";
+import Sidebar from "../../components/Sidebar/Sidebar";
+import Header from "../../components/Header/Header";
+import Home from "../../components/Home/Home";
+import Footer from "../../components/Footer/Footer";
 
 const Layout = () => {
   return (

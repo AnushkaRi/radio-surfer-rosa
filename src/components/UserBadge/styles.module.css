@@ -1,0 +1,21 @@
+.badge_container {
+  display: block;
+}
+
+.avatar_container {
+  float: right;
+  display: flex;
+  flex-flow: row;
+  background: rgb(0, 0, 0);
+  width: 30%;
+  border-radius: 50px;
+  padding: 5px 10px;
+  gap: 15px;
+  font-weight: bold;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 15%;
+  width: 15%;
+}

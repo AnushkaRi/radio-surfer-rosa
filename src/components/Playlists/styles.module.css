@@ -8,3 +8,13 @@
   border-top: 1px solid rgb(255, 255, 255);
   font-weight: 600;
 }
+
+.btn {
+  all: unset;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.btn:hover {
+  color: rgb(254, 0, 173);
+}

@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import apiClient from "../../services/Authorization";
 import styles from "./styles.module.css";
 
-const PLAYLISTS_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
-
 const Playlists = () => {
   const [playlists, setPlaylists] = useState(null);
 
@@ -16,11 +14,13 @@ const Playlists = () => {
   }, []);
 
   return (
-    <ul className={styles.playlists_container}>
-      {playlists?.map((playlist) => (
-        <li>{playlist.name}</li>
+    <div className={styles.playlists_container}>
+      {playlists?.map((playlist, id) => (
+        <button key={id} className={styles.btn}>
+          {playlist.name}
+        </button>
       ))}
-    </ul>
+    </div>
   );
 };
 

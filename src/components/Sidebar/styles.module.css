@@ -15,25 +15,27 @@
   color: rgb(254, 0, 173);
 }
 
-.sections ul {
+.sections {
   font-size: 1.1rem;
   font-weight: 700;
   color: rgb(255, 255, 255);
-  list-style-type: none;
   display: flex;
   flex-flow: column;
   align-items: flex-start;
   gap: 20px;
   padding: 10px;
+  margin-bottom: 15px;
 }
 
-.sections li {
+.btn {
+  all: unset;
   display: flex;
+  color: rgb(255, 255, 255);
   gap: 10px;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 
-li:hover {
+.btn:hover {
   color: rgb(254, 0, 173);
 }

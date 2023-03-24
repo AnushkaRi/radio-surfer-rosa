@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Login from "../Login/Login";
-import Layout from "../../components/Layout/Layout";
+import Layout from "../Layout/Layout";
 import { setClientToken } from "../../services/Authorization";
 
 const Redirect = () => {

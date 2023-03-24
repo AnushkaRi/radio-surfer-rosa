@@ -14,20 +14,18 @@ const Sidebar = () => {
         </div>
       </div>
       <div className={styles.sections}>
-        <ul>
-          <li>
-            <MdHomeFilled />
-            <span>Home</span>
-          </li>
-          <li>
-            <MdSearch />
-            <span>Search</span>
-          </li>
-          <li>
-            <IoLibrary />
-            <span>Your Library</span>
-          </li>
-        </ul>
+        <button className={styles.btn}>
+          <MdHomeFilled />
+          <span>Home</span>
+        </button>
+        <button className={styles.btn}>
+          <MdSearch />
+          <span>Search</span>
+        </button>
+        <button className={styles.btn}>
+          <IoLibrary />
+          <span>Your Library</span>
+        </button>
       </div>
       <Playlists />
     </div>
