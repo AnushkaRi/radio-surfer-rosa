@@ -1,7 +1,8 @@
+import { Outlet } from "react-router-dom";
+
 import styles from "./styles.module.css";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Header from "../../components/Header/Header";
-import Home from "../../components/Home/Home";
 import Footer from "../../components/Footer/Footer";
 
 const Layout = () => {
@@ -9,7 +10,7 @@ const Layout = () => {
     <div className={styles.radio_container}>
       <Sidebar />
       <Header />
-      <Home />
+      <Outlet />
       <Footer />
     </div>
   );

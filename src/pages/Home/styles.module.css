@@ -1,0 +1,10 @@
+.home_container {
+  grid-area: main-area;
+  background: rgb(49, 166, 88);
+}
+
+.greeting {
+  display: flex;
+  align-items: flex-start;
+  margin: auto 20px;
+}

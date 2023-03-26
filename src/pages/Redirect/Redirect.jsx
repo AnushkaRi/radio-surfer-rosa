@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import Login from "../Login/Login";
-import Layout from "../Layout/Layout";
-import { setClientToken } from "../../services/Authorization";
+import { useNavigate } from "react-router-dom";
+
+import { setClientToken } from "../../services/Spotify";
 
 const Redirect = () => {
   const [token, setToken] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = window.localStorage.getItem("token");
@@ -16,13 +17,17 @@ const Redirect = () => {
       window.localStorage.setItem("token", _token);
       setToken(_token);
       setClientToken(_token);
-    } else {
+      navigate("/home");
+    } else if (token) {
       setToken(token);
       setClientToken(token);
+      navigate("/home");
+    } else {
+      navigate("/");
     }
     console.log(token);
   }, []);
 
-  return !token ? <Login /> : <Layout />;
+  return <div>Redirect!</div>;
 };
 export default Redirect;

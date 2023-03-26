@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import apiClient from "../../services/Authorization";
+import apiClient from "../../services/Spotify";
 import styles from "./styles.module.css";
 
 const UserBadge = () => {
