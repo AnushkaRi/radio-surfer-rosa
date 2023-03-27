@@ -1,5 +1,4 @@
 import { MdHomeFilled, MdSearch, MdWaves } from "react-icons/md";
-import { IoLibrary } from "react-icons/io5";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -33,10 +32,6 @@ const Sidebar = () => {
         <button className={styles.btn} onClick={() => navigate("/search")}>
           <MdSearch />
           <span>Search</span>
-        </button>
-        <button className={styles.btn} onClick={() => navigate("/library")}>
-          <IoLibrary />
-          <span>Your Library</span>
         </button>
       </div>
       <div className={styles.playlists_container}>

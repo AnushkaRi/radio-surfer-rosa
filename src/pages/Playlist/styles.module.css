@@ -1,4 +1,11 @@
-/* .playlist_container {
+.playlist_container {
   grid-area: main-area;
+  background-color: rgb(212, 90, 110);
+  display: flex;
+  flex-flow: row;
 }
- */
+
+.image img {
+  width: 300px;
+  height: 300px;
+}

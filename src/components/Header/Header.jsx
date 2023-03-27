@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 const Header = () => {
   const navigate = useNavigate();
 
+  // go back & forward
   const goBack = () => {
     navigate(-1);
   };
@@ -14,6 +15,8 @@ const Header = () => {
   const goForward = () => {
     navigate(1);
   };
+
+  // show search field
 
   return (
     <div className={styles.header_container}>
