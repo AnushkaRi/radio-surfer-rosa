@@ -35,8 +35,8 @@ const Sidebar = () => {
         </button>
       </div>
       <div className={styles.playlists_container}>
-        {playlists?.map((playlist, id) => (
-          <button key={id} className={styles.btn} onClick={() => navigate("/playlist")}>
+        {playlists?.map((playlist) => (
+          <button key={playlist.id} className={styles.btn} onClick={() => navigate(`/playlist/${playlist.id}`)}>
             {playlist.name}
           </button>
         ))}
