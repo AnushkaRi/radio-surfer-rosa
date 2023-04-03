@@ -47,6 +47,7 @@
   display: flex;
   flex-flow: column;
   margin-bottom: 25px;
+  overflow: auto;
 }
 
 .track_row {
@@ -55,8 +56,13 @@
   gap: 15px;
   margin: 0 30px;
   padding: 10px 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
+.track_row:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
 .col,
 .track_info {
   display: flex;

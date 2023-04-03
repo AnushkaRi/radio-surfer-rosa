@@ -1,0 +1,30 @@
+.search_container {
+  grid-area: header;
+  background-color: aqua;
+}
+
+.search_bar {
+  background: rgb(255, 255, 255);
+  width: 40%;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.search_bar input {
+  border: none;
+  width: 100%;
+  height: 25px;
+  font: inherit;
+  font-size: small;
+}
+
+.search_bar input:focus {
+  outline: none;
+}
+
+.results_container {
+  grid-area: main-area;
+}

@@ -1,4 +1,4 @@
-import { FaSearch, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 import UserBadge from "../UserBadge/UserBadge";
@@ -16,8 +16,6 @@ const Header = () => {
     navigate(1);
   };
 
-  // show search field
-
   return (
     <div className={styles.header_container}>
       <div className={styles.nav_btn_container}>
@@ -28,10 +26,7 @@ const Header = () => {
           <FaChevronRight />
         </button>
       </div>
-      <div className={styles.search_bar}>
-        <FaSearch color="black" />
-        <input className={styles.input} placeholder="What do you want to listen to?"></input>
-      </div>
+
       <UserBadge />
     </div>
   );
