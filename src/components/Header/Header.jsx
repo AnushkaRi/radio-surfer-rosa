@@ -26,7 +26,6 @@ const Header = () => {
           <FaChevronRight />
         </button>
       </div>
-
       <UserBadge />
     </div>
   );

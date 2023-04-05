@@ -1,15 +1,18 @@
 .search_container {
-  grid-area: header;
-  background-color: aqua;
 }
 
 .search_bar {
+  grid-area: header;
+  position: absolute;
+  top: 5%;
+  left: 30%;
+  transform: translate(-5%, -30%);
+  display: inline-flex;
+  align-items: center;
   background: rgb(255, 255, 255);
-  width: 40%;
+  width: 300px;
   padding: 5px 10px;
   border-radius: 20px;
-  display: flex;
-  align-items: center;
   gap: 5px;
 }
 
@@ -27,4 +30,11 @@
 
 .results_container {
   grid-area: main-area;
+  background-color: aquamarine;
+  width: 100%;
+  height: 100%;
+}
+
+.artist_name {
+  font-size: 1.5rem;
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { FaClock } from "react-icons/fa";
 
@@ -7,7 +7,6 @@ import styles from "./styles.module.css";
 
 const Playlist = () => {
   const params = useParams();
-  /* const bottomRef = useRef(null); */
   const [selectedPlaylist, setSelectedPlaylist] = useState("");
 
   useEffect(() => {
@@ -15,8 +14,6 @@ const Playlist = () => {
       setSelectedPlaylist(response.data);
       console.log(response.data);
     });
-
-    /* bottomRef.current?.scrollIntoView({ behavior: "smooth" }); */
   }, [params.id]);
 
   const msToMinutesAndSeconds = (ms) => {
@@ -74,7 +71,6 @@ const Playlist = () => {
               <div className={styles.col}>
                 <span>{msToMinutesAndSeconds(track.duration_ms)}</span>
               </div>
-              {/*  <div ref={bottomRef}></div> */}
             </div>
           ))}
         </div>
