@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { FaClock } from "react-icons/fa";
 
 import apiClient from "../../services/Spotify";
+import { msToMinutesAndSeconds } from "../../services/Spotify";
 import styles from "./styles.module.css";
 
 const Playlist = () => {
@@ -15,12 +16,6 @@ const Playlist = () => {
       console.log(response.data);
     });
   }, [params.id]);
-
-  const msToMinutesAndSeconds = (ms) => {
-    const minutes = Math.floor(ms / 60000);
-    const seconds = ((ms % 60000) / 1000).toFixed(0);
-    return minutes + ":" + seconds;
-  };
 
   return (
     <div className={styles.playlist_container}>

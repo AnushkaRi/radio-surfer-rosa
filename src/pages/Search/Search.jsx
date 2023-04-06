@@ -7,26 +7,30 @@ import styles from "./styles.module.css";
 
 const Search = () => {
   const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [searchArtistResults, setSearchArtistResults] = useState([]);
+  const [searchTrackResults, setSearchTrackResults] = useState([]);
 
   useEffect(() => {
-    if (!search) return setSearchResults([]);
+    if (!search) return setSearchArtistResults([]);
 
     apiClient.get(`search?q=` + search + `&type=artist,track&limit=10`).then((response) => {
-      setSearchResults(
+      setSearchArtistResults(
         response.data.artists.items.slice(0, 1).map((artist) => {
           return {
             name: artist.name,
             type: artist.type,
-            genre: artist.genres[0],
             image: artist.images[2].url,
+            uri: artist.uri,
           };
         }),
-
-        response.data.tracks.items.map((track) => {
+      );
+      setSearchTrackResults(
+        response.data.tracks.items.slice(0, 4).map((track) => {
           return {
-            artist: track.artists[0].name,
+            artist: track.album.artists[0].name,
             title: track.name,
+            image: track.album.images[2].url,
+            duration: track.duration_ms,
             uri: track.uri,
           };
         }),
@@ -47,8 +51,11 @@ const Search = () => {
         ></input>
       </div>
       <div className={styles.results}>
-        {searchResults.map((artist, track) => (
-          <SearchResults artist={artist} track={track} key={track.uri} />
+        {/* {searchArtistResults.map((artist) => (
+          <SearchResults artist={artist} key={artist.uri} />
+        ))} */}
+        {searchTrackResults.map((track) => (
+          <SearchResults track={track} key={track.uri} />
         ))}
       </div>
     </div>
@@ -56,9 +63,3 @@ const Search = () => {
 };
 
 export default Search;
-
-/* {searchResults.map((track) => (
-  <div className={styles.artist_name}>
-    <span>{track.title}</span>
-  </div>
-))} */
