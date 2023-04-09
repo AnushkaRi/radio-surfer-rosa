@@ -9,11 +9,12 @@ const Search = () => {
   const [search, setSearch] = useState("");
   const [searchArtistResults, setSearchArtistResults] = useState([]);
   const [searchTrackResults, setSearchTrackResults] = useState([]);
+  const [searchAlbumResults, setSearchAlbumResults] = useState([]);
 
   useEffect(() => {
     if (!search) return setSearchArtistResults([]);
 
-    apiClient.get(`search?q=` + search + `&type=artist,track&limit=10`).then((response) => {
+    apiClient.get(`search?q=` + search + `&type=artist,track,album&limit=10`).then((response) => {
       setSearchArtistResults(
         response.data.artists.items.slice(0, 1).map((artist) => {
           return {
@@ -36,6 +37,17 @@ const Search = () => {
           };
         }),
       );
+
+      setSearchAlbumResults(
+        response.data.albums.items.map((album) => {
+          return {
+            image: album.images[1].url,
+            title: album.name,
+            year: album.release_date,
+            artist: album.artists[0].name,
+          };
+        }),
+      );
       console.log(response.data);
     });
   }, [search]);
@@ -52,7 +64,11 @@ const Search = () => {
         ></input>
       </div>
       <div>
-        <SearchResults searchArtistResults={searchArtistResults} searchTrackResults={searchTrackResults} />
+        <SearchResults
+          searchArtistResults={searchArtistResults}
+          searchTrackResults={searchTrackResults}
+          searchAlbumResults={searchAlbumResults}
+        />
       </div>
     </div>
   );
