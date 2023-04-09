@@ -24,6 +24,7 @@ const Search = () => {
           };
         }),
       );
+
       setSearchTrackResults(
         response.data.tracks.items.slice(0, 4).map((track) => {
           return {
@@ -50,13 +51,8 @@ const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </div>
-      <div className={styles.results}>
-        {/* {searchArtistResults.map((artist) => (
-          <SearchResults artist={artist} key={artist.uri} />
-        ))} */}
-        {searchTrackResults.map((track) => (
-          <SearchResults track={track} key={track.uri} />
-        ))}
+      <div>
+        <SearchResults searchArtistResults={searchArtistResults} searchTrackResults={searchTrackResults} />
       </div>
     </div>
   );
