@@ -1,12 +1,16 @@
-import styles from "./styles.module.css";
 import { msToMinutesAndSeconds } from "../../services/Spotify";
+import Card from "../Card/Card";
+import CardGrid from "../CardGrid/CardGrid";
 
-const SearchResults = ({ searchArtistResults, searchTrackResults }) => {
+import styles from "./styles.module.css";
+
+const SearchResults = ({ searchArtistResults, searchTrackResults, searchAlbumResults }) => {
   return (
     <div className={styles.results_wrapper}>
       <div className={styles.results_container}>
         <div className={styles.results}>
           <h2>Top Result</h2>
+
           {searchArtistResults.map((artist) => {
             return (
               <div className={styles.artist_container}>
@@ -46,8 +50,14 @@ const SearchResults = ({ searchArtistResults, searchTrackResults }) => {
           })}
         </div>
       </div>
+
       <div className={styles.album_container}>
         <h2>Albums</h2>
+        <CardGrid>
+          {searchAlbumResults.map((album) => (
+            <Card imageUrl={album.image} title={album.title} year={album.year} description={album.artist} />
+          ))}
+        </CardGrid>
       </div>
     </div>
   );

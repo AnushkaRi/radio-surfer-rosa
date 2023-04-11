@@ -63,10 +63,10 @@
 .track_row:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
-.col,
-.track_info {
+.col {
   display: flex;
   flex-flow: column;
+  justify-content: space-between;
   align-items: flex-start;
 }
 

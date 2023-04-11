@@ -12,8 +12,6 @@ const Search = () => {
   const [searchAlbumResults, setSearchAlbumResults] = useState([]);
 
   useEffect(() => {
-    if (!search) return setSearchArtistResults([]);
-
     apiClient.get(`search?q=` + search + `&type=artist,track,album&limit=10`).then((response) => {
       setSearchArtistResults(
         response.data.artists.items.slice(0, 1).map((artist) => {
@@ -43,7 +41,7 @@ const Search = () => {
           return {
             image: album.images[1].url,
             title: album.name,
-            year: album.release_date,
+            year: album.release_date.split("-")[0],
             artist: album.artists[0].name,
           };
         }),
@@ -52,17 +50,22 @@ const Search = () => {
     });
   }, [search]);
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setSearch("");
+  };
+
   return (
     <div className={styles.search_container}>
-      <div className={styles.search_bar}>
+      <form className={styles.search_bar} onSubmit={submitHandler}>
         <FaSearch color="black" />
         <input
           className={styles.input}
-          placeholder="Search Song/Artist"
+          placeholder="Search for good music!"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         ></input>
-      </div>
+      </form>
       <div>
         <SearchResults
           searchArtistResults={searchArtistResults}
