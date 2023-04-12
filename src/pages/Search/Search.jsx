@@ -68,6 +68,7 @@ const Search = () => {
       </form>
       <div>
         <SearchResults
+          search={search}
           searchArtistResults={searchArtistResults}
           searchTrackResults={searchTrackResults}
           searchAlbumResults={searchAlbumResults}

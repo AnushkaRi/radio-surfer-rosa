@@ -26,11 +26,15 @@
 
 .description_container {
   padding: 3px 10px;
+  margin-bottom: 10px;
 }
 
 .year,
 .description {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
   text-align: left;
+}
+.description {
+  margin-bottom: 5px;
 }

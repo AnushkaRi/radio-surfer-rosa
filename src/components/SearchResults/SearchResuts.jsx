@@ -4,12 +4,12 @@ import CardGrid from "../CardGrid/CardGrid";
 
 import styles from "./styles.module.css";
 
-const SearchResults = ({ searchArtistResults, searchTrackResults, searchAlbumResults }) => {
+const SearchResults = ({ search, searchArtistResults, searchTrackResults, searchAlbumResults }) => {
   return (
     <div className={styles.results_wrapper}>
       <div className={styles.results_container}>
         <div className={styles.results}>
-          <h2>Top Result</h2>
+          {search && <h2>Top Result</h2>}
 
           {searchArtistResults.map((artist) => {
             return (
@@ -29,7 +29,8 @@ const SearchResults = ({ searchArtistResults, searchTrackResults, searchAlbumRes
         </div>
 
         <div className={styles.results}>
-          <h2>Songs</h2>
+          {search && <h2>Songs</h2>}
+
           {searchTrackResults.map((track) => {
             return (
               <div className={styles.track_container}>
@@ -52,7 +53,8 @@ const SearchResults = ({ searchArtistResults, searchTrackResults, searchAlbumRes
       </div>
 
       <div className={styles.album_container}>
-        <h2>Albums</h2>
+        {search && <h2>Albums</h2>}
+
         <CardGrid>
           {searchAlbumResults.map((album) => (
             <Card imageUrl={album.image} title={album.title} year={album.year} description={album.artist} />

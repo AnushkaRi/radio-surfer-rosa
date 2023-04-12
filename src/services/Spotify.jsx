@@ -4,12 +4,12 @@ const apiClient = axios.create({
   baseURL: "https://api.spotify.com/v1/",
 });
 
-export const setClientToken = (token) => {
-  apiClient.interceptors.request.use(async function (config) {
-    config.headers.Authorization = "Bearer " + token;
-    return config;
-  });
-};
+apiClient.interceptors.request.use(async function (config) {
+  const token = localStorage.getItem('token');
+  config.headers.Authorization = "Bearer " + token;
+  config.headers["Content-Type"] = 'application/json';
+  return config;
+});
 
 export default apiClient;
 

@@ -10,8 +10,8 @@ const Card = ({ imageUrl, title, year, description }) => {
         <div className={styles.title}>{title}</div>
       </div>
       <div className={styles.description_container}>
-        <div className={styles.year}>{year}</div>
         <div className={styles.description}>{description}</div>
+        <div className={styles.year}>{year}</div>
       </div>
     </div>
   );
