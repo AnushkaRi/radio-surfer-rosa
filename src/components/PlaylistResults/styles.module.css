@@ -4,6 +4,7 @@
   display: flex;
   flex-flow: column;
   align-items: flex-start;
+  height: 100%;
 }
 .playlist_details {
   display: flex;
@@ -43,11 +44,17 @@
   border-bottom: 1px solid;
 }
 
+.list {
+  position: sticky;
+}
+
 .tracks {
   display: flex;
   flex-flow: column;
   margin-bottom: 25px;
-  overflow: auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 300px;
 }
 
 .track_row {

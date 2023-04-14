@@ -44,7 +44,7 @@ const PlaylistResults = ({ selectedPlaylist }) => {
                 <img src={track.album.images[2].url} alt="track"></img>
                 <div className={styles.col}>
                   <span className={styles.track_name}>{track.name}</span>
-                  <span>{track.artists.map((artist) => artist.name)}</span>
+                  <span>{track.artists.map((artist) => artist.name).join(" & ")}</span>
                 </div>
               </div>
               <div className={styles.col}>

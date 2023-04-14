@@ -48,4 +48,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 
 // Refresh Token
-// when entering Layout in URL is written: http://127.0.0.1:5173/redirect#
