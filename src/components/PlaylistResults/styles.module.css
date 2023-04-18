@@ -25,6 +25,7 @@
 .details .title {
   font-size: 5rem;
   margin: 25px 0;
+  color: rgb(255, 255, 255);
 }
 
 .list_container {
@@ -52,9 +53,6 @@
   display: flex;
   flex-flow: column;
   margin-bottom: 25px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  max-height: 300px;
 }
 
 .track_row {
@@ -64,7 +62,7 @@
   margin: 0 30px;
   padding: 10px 5px;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .track_row:hover {

@@ -1,10 +1,21 @@
 .home_container {
   grid-area: main-area;
-  background: rgb(49, 166, 88);
+  background-color: #242424;
+  margin-left: 25px;
 }
 
 .greeting {
   display: flex;
   align-items: flex-start;
-  margin: auto 20px;
+}
+
+.artists_container h2,
+.tracks_container h2 {
+  display: flex;
+  align-items: flex-start;
+  color: rgb(254, 0, 173);
+}
+
+.tracks_container {
+  margin-bottom: 25px;
 }

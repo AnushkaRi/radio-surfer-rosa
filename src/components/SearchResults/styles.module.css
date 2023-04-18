@@ -4,9 +4,6 @@
   align-items: flex-start;
   margin-left: 25px;
   gap: 25px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  max-height: 600px;
 }
 
 .results_container {
@@ -63,7 +60,7 @@
   grid-template-columns: 600px 1fr;
   padding: 10px 5px;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: 0.5s ease-in-out;
 }
 
 .track_row:hover {
@@ -101,4 +98,8 @@
 
 .album_container h2 {
   text-align: left;
+}
+
+h2 {
+  color: rgb(254, 0, 173);
 }

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import apiClient from "../../services/Spotify";
 import { showTimeOfDay } from "../../helpers/TimeOfDay";
+import CardGrid from "../../components/CardGrid/CardGrid";
+import Card from "../../components/Card/Card";
 import styles from "./styles.module.css";
 
 const Home = () => {
@@ -17,6 +19,7 @@ const Home = () => {
             image: artist.images[1].url,
             name: artist.name,
             type: artist.type,
+            id: artist.id,
           };
         }),
       );
@@ -29,7 +32,7 @@ const Home = () => {
           return {
             name: track.name,
             album: track.album.name,
-            artist: track.artists.map((artist) => artist.name).join(" & "),
+            artists: track.artists.map((artist) => artist.name).join(" & "),
             image: track.album.images[1].url,
           };
         }),
@@ -43,7 +46,22 @@ const Home = () => {
       <div className={styles.greeting}>
         <h1>Good {timeOfday}</h1>
       </div>
-      <div></div>
+      <div className={styles.artists_container}>
+        <h2>Top Artists</h2>
+        <CardGrid>
+          {topArtists.map((artist) => (
+            <Card key={artist.id} imageUrl={artist.image} title={artist.name} description={artist.type} />
+          ))}
+        </CardGrid>
+      </div>
+      <div className={styles.tracks_container}>
+        <h2>Top Tracks</h2>
+        <CardGrid>
+          {topTracks.map((track) => (
+            <Card imageUrl={track.image} title={track.name} name={track.artists} description={track.album} />
+          ))}
+        </CardGrid>
+      </div>
     </div>
   );
 };

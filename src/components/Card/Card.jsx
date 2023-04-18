@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 
-const Card = ({ imageUrl, title, year, description }) => {
+const Card = ({ imageUrl, title, description, name }) => {
   return (
     <div className={styles.card}>
       <div className={styles.image_container}>
@@ -10,8 +10,8 @@ const Card = ({ imageUrl, title, year, description }) => {
         <div className={styles.title}>{title}</div>
       </div>
       <div className={styles.description_container}>
+        <div className={styles.name}>{name}</div>
         <div className={styles.description}>{description}</div>
-        <div className={styles.year}>{year}</div>
       </div>
     </div>
   );

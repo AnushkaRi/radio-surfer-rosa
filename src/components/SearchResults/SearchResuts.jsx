@@ -57,7 +57,7 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
 
         <CardGrid>
           {searchAlbumResults.map((album) => (
-            <Card imageUrl={album.image} title={album.title} year={album.year} description={album.artist} />
+            <Card imageUrl={album.image} title={album.title} description={album.year} name={album.artist} />
           ))}
         </CardGrid>
       </div>

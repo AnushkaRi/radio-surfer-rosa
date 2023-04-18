@@ -2,6 +2,12 @@
   background-color: rgb(28, 27, 27);
   border-radius: 10px;
   width: 170px;
+  padding: 2px;
+  transition: 0.5s ease-in-out;
+}
+
+.card:hover {
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .image_container {
@@ -22,6 +28,9 @@
   font-size: 1rem;
   font-weight: 600;
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .description_container {
@@ -29,12 +38,16 @@
   margin-bottom: 10px;
 }
 
-.year,
+.name,
 .description {
-  font-size: 0.9rem;
-  font-weight: 400;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
   text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.description {
+.name {
   margin-bottom: 5px;
 }
