@@ -1,6 +1,6 @@
 .home_container {
   grid-area: main-area;
-  background-color: #242424;
+  background-color: rgb(36, 36, 36);
   margin-left: 25px;
 }
 

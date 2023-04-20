@@ -2,4 +2,8 @@
   grid-area: footer;
   background: greenyellow;
   height: 75px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
 }

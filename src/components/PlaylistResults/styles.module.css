@@ -35,7 +35,6 @@
 }
 
 .list .header {
-  position: sticky;
   width: auto;
   display: grid;
   grid-template-columns: 25px 3fr 2fr 0.1fr;
@@ -43,9 +42,6 @@
   margin: 0 30px;
   padding: 10px 5px;
   border-bottom: 1px solid;
-}
-
-.list {
   position: sticky;
 }
 

@@ -5,9 +5,11 @@
   flex-flow: row;
   justify-content: space-between;
   align-items: center;
-  margin: 25px;
-  background-color: #242424;
+  padding: 25px;
+  background-color: rgb(36, 36, 36);
   position: sticky;
+  top: 0;
+  z-index: 1;
 }
 
 .nav_btn_container {

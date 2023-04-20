@@ -23,4 +23,11 @@
   background: transparent;
   padding: 10px 30px;
   border-radius: 20px;
+  transition: 0.3s ease-in-out;
+}
+
+.btn_login:hover {
+  border-color: rgb(254, 0, 173);
+  color: rgb(254, 0, 173);
+  fill: rgb(254, 0, 173);
 }
