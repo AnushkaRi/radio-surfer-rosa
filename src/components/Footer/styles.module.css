@@ -1,9 +1,15 @@
 .footer_container {
   grid-area: footer;
-  background: greenyellow;
-  height: 75px;
+  background: rgb(0, 0, 0);
+  height: 100px;
+  width: 100%;
   position: fixed;
   left: 0;
   bottom: 0;
-  width: 100%;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  justify-self: center;
+  padding: 0 10px;
 }

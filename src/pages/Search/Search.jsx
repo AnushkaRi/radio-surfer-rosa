@@ -20,6 +20,7 @@ const Search = () => {
             type: artist.type,
             image: artist.images[2].url,
             uri: artist.uri,
+            id: artist.id,
           };
         }),
       );
@@ -32,6 +33,7 @@ const Search = () => {
             image: track.album.images[2].url,
             duration: track.duration_ms,
             uri: track.uri,
+            id: track.id,
           };
         }),
       );
@@ -43,6 +45,7 @@ const Search = () => {
             title: album.name,
             year: album.release_date.split("-")[0],
             artist: album.artists[0].name,
+            id: album.id,
           };
         }),
       );

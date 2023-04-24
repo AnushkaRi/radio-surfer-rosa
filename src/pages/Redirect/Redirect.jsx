@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 const Redirect = () => {
   const navigate = useNavigate();
 
@@ -21,6 +20,6 @@ const Redirect = () => {
     }
   }, []);
 
-  return <div>Redirect!</div>;
+  return <div>Redirecting...</div>;
 };
 export default Redirect;

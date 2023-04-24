@@ -7,13 +7,13 @@ import Card from "../../components/Card/Card";
 import styles from "./styles.module.css";
 
 const Home = () => {
-  const [topArtists, setTopArtist] = useState([]);
+  const [topArtists, setTopArtists] = useState([]);
   const [topTracks, setTopTracks] = useState([]);
   const timeOfday = showTimeOfDay();
 
   useEffect((limit = 6, timeRange = "medium_term") => {
     apiClient.get(`me/top/artists?limit=${limit}&time_range=${timeRange}`).then((response) => {
-      setTopArtist(
+      setTopArtists(
         response.data.items.map((artist) => {
           return {
             image: artist.images[1].url,
@@ -34,6 +34,7 @@ const Home = () => {
             album: track.album.name,
             artists: track.artists.map((artist) => artist.name).join(" & "),
             image: track.album.images[1].url,
+            id: track.id,
           };
         }),
       );
@@ -58,7 +59,13 @@ const Home = () => {
         <h2>Top Tracks</h2>
         <CardGrid>
           {topTracks.map((track) => (
-            <Card imageUrl={track.image} title={track.name} name={track.artists} description={track.album} />
+            <Card
+              key={track.id}
+              imageUrl={track.image}
+              title={track.name}
+              name={track.artists}
+              description={track.album}
+            />
           ))}
         </CardGrid>
       </div>

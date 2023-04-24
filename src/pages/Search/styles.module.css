@@ -4,7 +4,6 @@
 }
 
 .search_bar {
-  grid-area: header;
   position: fixed;
   top: 5%;
   left: 30%;

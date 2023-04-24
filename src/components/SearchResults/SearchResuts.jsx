@@ -13,7 +13,7 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
 
           {searchArtistResults.map((artist) => {
             return (
-              <div className={styles.artist_container}>
+              <div className={styles.artist_container} key={artist.id}>
                 <div className={styles.artist_image}>
                   <img src={artist.image} alt="artist" />
                 </div>
@@ -35,7 +35,7 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
             return (
               <div className={styles.track_container}>
                 <div className={styles.track_row}>
-                  <div className={styles.track_details}>
+                  <div className={styles.track_details} key={track.id}>
                     <img src={track.image} />
                     <div className={styles.col}>
                       <span className={styles.track_name}>{track.title}</span>
@@ -57,7 +57,13 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
 
         <CardGrid>
           {searchAlbumResults.map((album) => (
-            <Card imageUrl={album.image} title={album.title} description={album.year} name={album.artist} />
+            <Card
+              key={album.id}
+              imageUrl={album.image}
+              title={album.title}
+              description={album.year}
+              name={album.artist}
+            />
           ))}
         </CardGrid>
       </div>
