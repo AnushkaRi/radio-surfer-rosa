@@ -12,21 +12,28 @@ const PlayerControls = () => {
     setIsPlaying(!isPlaying);
   };
   return (
-    <div className={styles.controls_container}>
-      <div className={styles.shuffle}>
-        <BsShuffle />
+    <div className={styles.wrapper}>
+      <div className={styles.controls_container}>
+        <div className={styles.shuffle}>
+          <BsShuffle />
+        </div>
+        <div className={styles.previous}>
+          <CgPlayTrackPrev />
+        </div>
+        <div className={styles.state} onClick={changePlayPause}>
+          {isPlaying ? <BsFillPauseCircleFill /> : <BsFillPlayCircleFill />}
+        </div>
+        <div className={styles.next}>
+          <CgPlayTrackNext />
+        </div>
+        <div className={styles.repeat}>
+          <FiRepeat />
+        </div>
       </div>
-      <div className={styles.previous}>
-        <CgPlayTrackPrev />
-      </div>
-      <div className={styles.state} onClick={changePlayPause}>
-        {isPlaying ? <BsFillPauseCircleFill /> : <BsFillPlayCircleFill />}
-      </div>
-      <div className={styles.next}>
-        <CgPlayTrackNext />
-      </div>
-      <div className={styles.repeat}>
-        <FiRepeat />
+      <div className={styles.progress_container}>
+        <div className={styles.current_time}>00:00</div>
+        <input type="range" className={styles.progress_bar} />
+        <div className={styles.duration}>00:00</div>
       </div>
     </div>
   );

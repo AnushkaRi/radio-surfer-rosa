@@ -1,4 +1,10 @@
-.controls_container {
+.wrapper {
+  display: flex;
+  flex-flow: column;
+}
+
+.controls_container,
+.progress_container {
   display: flex;
   flex-flow: row;
   align-items: center;
