@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import Login from "./pages/Login/Login";
 import Redirect from "./pages/Redirect/Redirect";
 import Home from "./pages/Home/Home";
+import Artist from "./pages/Artist/Artist";
 import Playlist from "./pages/Playlist/Playlist";
 import Search from "./pages/Search/Search";
 import Layout from "./pages/Layout/Layout";
@@ -13,7 +14,7 @@ import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/login",
     element: <Login />,
   },
 
@@ -21,12 +22,16 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home />,
       },
       {
         path: "/search",
         element: <Search />,
+      },
+      {
+        path: "/artist/:id",
+        element: <Artist />,
       },
       {
         path: "/playlist/:id",

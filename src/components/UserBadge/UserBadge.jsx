@@ -24,7 +24,7 @@ const UserBadge = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsOpen(false);
-    navigate("/");
+    navigate("/login");
   };
 
   return (

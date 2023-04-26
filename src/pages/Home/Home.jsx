@@ -51,7 +51,13 @@ const Home = () => {
         <h2>Top Artists</h2>
         <CardGrid>
           {topArtists.map((artist) => (
-            <Card key={artist.id} imageUrl={artist.image} title={artist.name} description={artist.type} />
+            <Card
+              key={artist.id}
+              imageUrl={artist.image}
+              title={artist.name}
+              description={artist.type}
+              link={`artist/${artist.id}`}
+            />
           ))}
         </CardGrid>
       </div>

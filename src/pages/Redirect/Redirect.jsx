@@ -12,11 +12,11 @@ const Redirect = () => {
     if (!token && hash) {
       const _token = hash.split("&")[0].split("=")[1];
       window.localStorage.setItem("token", _token);
-      navigate("/home");
-    } else if (token) {
-      navigate("/home");
-    } else {
       navigate("/");
+    } else if (token) {
+      navigate("/");
+    } else {
+      navigate("/login");
     }
   }, []);
 

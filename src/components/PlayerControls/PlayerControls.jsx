@@ -3,27 +3,37 @@ import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsShuffle } from "react-ic
 import { CgPlayTrackNext, CgPlayTrackPrev } from "react-icons/cg";
 import { FiRepeat } from "react-icons/fi";
 
+import apiClient from "../../services/Spotify";
 import styles from "./styles.module.css";
 
 const PlayerControls = () => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [changeTrack, setChangeTrack] = useState();
+
+  const handleChangeTrack = async (type) => {
+    apiClient.post(`me/player/${type}`).then((response) => {
+      setChangeTrack(response);
+      console.log(response);
+    });
+  };
 
   const changePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.controls_container}>
         <div className={styles.shuffle}>
           <BsShuffle />
         </div>
-        <div className={styles.previous}>
+        <div className={styles.previous} onClick={() => handleChangeTrack("previous")}>
           <CgPlayTrackPrev />
         </div>
         <div className={styles.state} onClick={changePlayPause}>
           {isPlaying ? <BsFillPauseCircleFill /> : <BsFillPlayCircleFill />}
         </div>
-        <div className={styles.next}>
+        <div className={styles.next} onClick={() => handleChangeTrack("next")}>
           <CgPlayTrackNext />
         </div>
         <div className={styles.repeat}>

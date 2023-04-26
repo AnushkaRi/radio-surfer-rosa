@@ -25,7 +25,7 @@ const Sidebar = () => {
         </div>
       </div>
       <div className={styles.sections}>
-        <button className={styles.btn} onClick={() => navigate("/home")}>
+        <button className={styles.btn} onClick={() => navigate("/")}>
           <MdHomeFilled />
           <span>Home</span>
         </button>
