@@ -58,13 +58,14 @@
 .track_row {
   display: grid;
   grid-template-columns: 600px 1fr;
-  padding: 10px 5px;
+  padding: 10px;
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
 
 .track_row:hover {
   background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
 }
 
 .track_details {
@@ -80,12 +81,13 @@
 
 .track_name {
   font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .col {
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
 }
 

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { msToMinutesAndSeconds } from "../../services/Spotify";
 import Card from "../Card/Card";
 import CardGrid from "../CardGrid/CardGrid";
@@ -13,17 +15,19 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
 
           {searchArtistResults.map((artist) => {
             return (
-              <div className={styles.artist_container} key={artist.id}>
-                <div className={styles.artist_image}>
-                  <img src={artist.image} alt="artist" />
+              <Link to={`/artist/${artist?.id}`}>
+                <div className={styles.artist_container} key={artist.id}>
+                  <div className={styles.artist_image}>
+                    <img src={artist.image} alt="artist" />
+                  </div>
+                  <div className={styles.artist_name}>
+                    <span>{artist.name}</span>
+                  </div>
+                  <div className={styles.artist_type}>
+                    <span>{artist.type}</span>
+                  </div>
                 </div>
-                <div className={styles.artist_name}>
-                  <span>{artist.name}</span>
-                </div>
-                <div className={styles.artist_type}>
-                  <span>{artist.type}</span>
-                </div>
-              </div>
+              </Link>
             );
           })}
         </div>
@@ -63,6 +67,7 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
               title={album.title}
               description={album.year}
               name={album.artist}
+              // link={`/album/${album.id}`}
             />
           ))}
         </CardGrid>

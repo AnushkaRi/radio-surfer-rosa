@@ -1,0 +1,11 @@
+.button {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 4rem;
+  color: white;
+}

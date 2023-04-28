@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { msToMinutesAndSeconds } from "../../services/Spotify";
 
 import apiClient from "../../services/Spotify";
 import Card from "../../components/Card/Card";
 import CardGrid from "../../components/CardGrid/CardGrid";
-import { msToMinutesAndSeconds } from "../../services/Spotify";
 import styles from "./styles.module.css";
 
 const Artist = () => {
@@ -51,44 +51,50 @@ const Artist = () => {
 
   return (
     <div className={styles.artist_container}>
-      <div className={styles.cover}>
+      <div className={styles.cover} key={artist.id}>
         <img src={artist.images?.[0].url} />
         <div className={styles.info}>
-          <div className={styles.name}>{artist?.name}</div>
+          <span className={styles.name}>{artist?.name}</span>
         </div>
       </div>
 
       <div className={styles.tracks_container}>
         <div className={styles.section_title}>Popular</div>
-        {tracks.map((track) => {
-          return (
-            <div className={styles.track_row}>
-              <div className={styles.track_details} key={track.id}>
-                <img src={track.image} />
+        {tracks &&
+          tracks.map((track, index) => {
+            return (
+              <div className={styles.track_row}>
                 <div className={styles.col}>
-                  <span className={styles.track_name}>{track.name}</span>
+                  <span>{index + 1}</span>
+                </div>
+                <div className={styles.track_details} key={track.id}>
+                  <img src={track.image} />
+                  <div className={styles.col}>
+                    <span className={styles.track_name}>{track.name}</span>
+                  </div>
+                </div>
+                <div className={styles.col}>
+                  <span>{msToMinutesAndSeconds(track.duration)}</span>
                 </div>
               </div>
-              <div className={styles.col}>
-                <span>{msToMinutesAndSeconds(track.duration)}</span>
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
 
       <div className={styles.album_container}>
         <div className={styles.section_title}>Discography</div>
         <CardGrid>
-          {albums.map((album) => (
-            <Card
-              key={album.id}
-              imageUrl={album.image}
-              title={album.title}
-              description={album.year}
-              name={album.artist}
-            />
-          ))}
+          {albums &&
+            albums.map((album) => (
+              <Card
+                key={album.id}
+                imageUrl={album.image}
+                title={album.title}
+                description={album.year}
+                name={album.artist}
+                // link={`/album/${album.id}`}
+              />
+            ))}
         </CardGrid>
       </div>
     </div>
