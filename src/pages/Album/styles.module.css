@@ -1,0 +1,94 @@
+.album_container {
+  height: 100%;
+  background: linear-gradient(180deg, rgba(36, 36, 36, 1) 5%, rgba(205, 52, 157, 1) 70%);
+}
+
+.cover {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+  gap: 15px;
+  padding: 40px 25px;
+  position: relative;
+}
+
+.info {
+  display: flex;
+  flex-flow: column;
+  gap: 25px;
+  margin-left: 25px;
+}
+
+.info_inline {
+  display: inline;
+}
+
+.info_inline span {
+  margin-right: 10px;
+}
+
+.type,
+.artist_name {
+  font-weight: bold;
+}
+
+.album_name {
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.list_container {
+  width: 100%;
+}
+
+.list .header {
+  width: auto;
+  display: grid;
+  grid-template-columns: 25px 2fr 0.1fr;
+  gap: 15px;
+  margin: 0 30px;
+  padding: 10px 5px;
+  border-bottom: 1px solid;
+  position: sticky;
+}
+
+.list {
+  margin-bottom: 10px;
+}
+.tracks {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 25px;
+}
+
+.track_row {
+  display: grid;
+  grid-template-columns: 25px 2fr 0.1fr;
+  gap: 15px;
+  margin: 0 30px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.track_row:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+}
+.col {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.track_details {
+  display: flex;
+  flex-direction: row;
+}
+
+.track_name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}

@@ -24,9 +24,13 @@ const Album = () => {
         <div className={styles.info}>
           <span className={styles.type}>{album.album_type}</span>
           <span className={styles.album_name}>{album.name}</span>
-          <span className={styles.artist_name}>{album.artists?.map((artist) => artist.name).join(" & ")}</span>
-          <span className={styles.date}>{album.release_date?.split("-")[0]}</span>
-          <span className={styles.total_tracks}>{album.total_tracks}</span>
+          <div className={styles.info_inline}>
+            <span className={styles.artist_name}>{album.artists?.map((artist) => artist.name).join(" & ")}</span>
+            <span>&#x2022;</span>
+            <span className={styles.date}>{album.release_date?.split("-")[0]}</span>
+            <span>&#x2022;</span>
+            <span className={styles.total_tracks}>{album.total_tracks} songs</span>
+          </div>
         </div>
       </div>
 
@@ -38,9 +42,6 @@ const Album = () => {
             </div>
             <div className={styles.col}>
               <span>Title</span>
-            </div>
-            <div className={styles.col}>
-              <span>Album</span>
             </div>
             <div className={styles.col}>
               <span>

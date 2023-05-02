@@ -1,6 +1,6 @@
 .playlist_container {
   grid-area: main-area;
-  background: linear-gradient(180deg, rgba(205, 52, 157, 1) 35%, rgba(47, 39, 45, 1) 100%);
+  background: linear-gradient(180deg, rgba(205, 52, 157, 1) 15%, rgba(47, 39, 45, 1) 100%);
   display: flex;
   flex-flow: column;
   align-items: flex-start;
