@@ -4,7 +4,6 @@ import { FaClock } from "react-icons/fa";
 
 import apiClient from "../../services/Spotify";
 import { msToMinutesAndSeconds } from "../../services/Spotify";
-import PlayButton from "../../components/PlayButton/PlayButton";
 import styles from "./styles.module.css";
 
 const Album = () => {
@@ -16,7 +15,8 @@ const Album = () => {
       setAlbum(response.data);
       console.log(response);
     });
-  });
+  }, [params]);
+
   return (
     <div className={styles.album_container}>
       <div className={styles.cover} key={album.id}>
@@ -24,14 +24,10 @@ const Album = () => {
         <div className={styles.info}>
           <span className={styles.type}>{album.album_type}</span>
           <span className={styles.album_name}>{album.name}</span>
-          <span className={styles.artist_name}>{album.artists.map((artist) => artist.name).join(" & ")}</span>
-          <span className={styles.date}>{album.realease_date}</span>
+          <span className={styles.artist_name}>{album.artists?.map((artist) => artist.name).join(" & ")}</span>
+          <span className={styles.date}>{album.release_date?.split("-")[0]}</span>
           <span className={styles.total_tracks}>{album.total_tracks}</span>
         </div>
-      </div>
-
-      <div className={styles.play_container}>
-        <PlayButton />
       </div>
 
       <div className={styles.list_container}>
@@ -53,7 +49,7 @@ const Album = () => {
             </div>
           </div>
         </div>
-        {album.tracks.items.map((track, index) => {
+        {album.tracks?.items?.map((track, index) => {
           return (
             <div className={styles.track_container}>
               <div className={styles.track_row}>

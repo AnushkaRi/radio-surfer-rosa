@@ -53,3 +53,8 @@
 .name {
   margin-bottom: 5px;
 }
+
+.link_text {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}

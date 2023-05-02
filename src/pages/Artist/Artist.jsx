@@ -30,7 +30,7 @@ const Artist = () => {
           };
         }),
       );
-      console.log(response);
+      console.log("r1", response);
     });
 
     apiClient.get(`artists/${params.id}/albums?include_groups=album`).then((response) => {
@@ -45,7 +45,7 @@ const Artist = () => {
           };
         }),
       );
-      console.log(response);
+      console.log("r4", response);
     });
   }, []);
 
@@ -58,8 +58,8 @@ const Artist = () => {
         </div>
       </div>
 
+      <div className={styles.section_title}>Popular</div>
       <div className={styles.tracks_container}>
-        <div className={styles.section_title}>Popular</div>
         {tracks &&
           tracks.map((track, index) => {
             return (
@@ -81,8 +81,8 @@ const Artist = () => {
           })}
       </div>
 
+      <div className={styles.section_title}>Discography</div>
       <div className={styles.album_container}>
-        <div className={styles.section_title}>Discography</div>
         <CardGrid>
           {albums &&
             albums.map((album) => (
@@ -92,7 +92,7 @@ const Artist = () => {
                 title={album.title}
                 description={album.year}
                 name={album.artist}
-                // link={`/album/${album.id}`}
+                link={`/album/${album.id}`}
               />
             ))}
         </CardGrid>

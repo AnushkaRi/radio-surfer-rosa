@@ -15,7 +15,7 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
 
           {searchArtistResults.map((artist) => {
             return (
-              <Link to={`/artist/${artist?.id}`}>
+              <Link to={`/artist/${artist?.id}`} className={styles.link_text}>
                 <div className={styles.artist_container} key={artist.id}>
                   <div className={styles.artist_image}>
                     <img src={artist.image} alt="artist" />
@@ -67,7 +67,7 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
               title={album.title}
               description={album.year}
               name={album.artist}
-              // link={`/album/${album.id}`}
+              link={`/album/${album.id}`}
             />
           ))}
         </CardGrid>

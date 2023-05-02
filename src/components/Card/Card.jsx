@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 const Card = ({ link, imageUrl, title, description, name }) => {
   return (
-    <Link to={link}>
+    <Link to={link} className={styles.link_text}>
       <div className={styles.card}>
         <div className={styles.image_container}>
           <img src={imageUrl} alt="" className={styles.image}></img>

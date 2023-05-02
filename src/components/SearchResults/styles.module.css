@@ -105,3 +105,8 @@
 h2 {
   color: rgb(254, 0, 173);
 }
+
+.link_text {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}

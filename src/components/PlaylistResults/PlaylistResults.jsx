@@ -36,7 +36,7 @@ const PlaylistResults = ({ selectedPlaylist }) => {
         </div>
         <div className={styles.tracks}>
           {selectedPlaylist.tracks?.items?.map(({ track }, index) => (
-            <div className={styles.track_row} key={track.id}>
+            <div className={styles.track_row} key={track.id} role="button" onClick={() => setTrack(track.name)}>
               <div className={styles.col}>
                 <span>{index + 1}</span>
               </div>
