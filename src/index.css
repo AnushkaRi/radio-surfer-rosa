@@ -12,8 +12,6 @@ body {
   color: rgb(255, 255, 255);
   background-color: #242424;
   margin: 0;
-
-  overflow: auto;
   max-height: 100vh;
 }
 

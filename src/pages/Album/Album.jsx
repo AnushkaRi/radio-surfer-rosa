@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { FaClock } from "react-icons/fa";
 
+import TrackItem from "../../components/TrackItem/TrackItem";
 import apiClient from "../../services/Spotify";
 import { msToMinutesAndSeconds } from "../../services/Spotify";
 import styles from "./styles.module.css";
@@ -50,7 +51,25 @@ const Album = () => {
             </div>
           </div>
         </div>
-        {album.tracks?.items?.map((track, index) => {
+
+        {album.tracks?.items?.map((track, index) => (
+          <TrackItem
+            key={track.id}
+            index={index + 1}
+            title={track.name}
+            artist={track.artists.map((artist) => artist.name).join(" & ")}
+            duration={msToMinutesAndSeconds(track.duration_ms)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Album;
+
+{
+  /*  {album.tracks?.items?.map((track, index) => {
           return (
             <div className={styles.track_container}>
               <div className={styles.track_row}>
@@ -69,10 +88,5 @@ const Album = () => {
               </div>
             </div>
           );
-        })}
-      </div>
-    </div>
-  );
-};
-
-export default Album;
+        })} */
+}

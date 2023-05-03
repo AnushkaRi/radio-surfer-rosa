@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { msToMinutesAndSeconds } from "../../services/Spotify";
 import Card from "../Card/Card";
 import CardGrid from "../CardGrid/CardGrid";
-
+import TrackItem from "../TrackItem/TrackItem";
 import styles from "./styles.module.css";
 
 const SearchResults = ({ search, searchArtistResults, searchTrackResults, searchAlbumResults }) => {
@@ -35,24 +35,17 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
         <div className={styles.results}>
           {search && <h2>Songs</h2>}
 
-          {searchTrackResults.map((track) => {
-            return (
-              <div className={styles.track_container}>
-                <div className={styles.track_row}>
-                  <div className={styles.track_details} key={track.id}>
-                    <img src={track.image} />
-                    <div className={styles.col}>
-                      <span className={styles.track_name}>{track.title}</span>
-                      <span>{track.artist}</span>
-                    </div>
-                  </div>
-                  <div className={styles.col}>
-                    <span>{msToMinutesAndSeconds(track.duration)}</span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {searchTrackResults.map((track) => (
+            <div className={styles.track_container}>
+              <TrackItem
+                key={track}
+                imageUrl={track.image}
+                title={track.title}
+                artist={track.artist}
+                duration={msToMinutesAndSeconds(track.duration)}
+              />
+            </div>
+          ))}
         </div>
       </div>
 
@@ -77,3 +70,22 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
 };
 
 export default SearchResults;
+
+/* {searchTrackResults.map((track) => {
+  return (
+    <div className={styles.track_container}>
+      <div className={styles.track_row}>
+        <div className={styles.track_details} key={track.id}>
+          <img src={track.image} />
+          <div className={styles.col}>
+            <span className={styles.track_name}>{track.title}</span>
+            <span>{track.artist}</span>
+          </div>
+        </div>
+        <div className={styles.col}>
+          <span>{msToMinutesAndSeconds(track.duration)}</span>
+        </div>
+      </div>
+    </div>
+  );
+})} */

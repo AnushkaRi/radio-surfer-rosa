@@ -5,6 +5,7 @@ import { msToMinutesAndSeconds } from "../../services/Spotify";
 import apiClient from "../../services/Spotify";
 import Card from "../../components/Card/Card";
 import CardGrid from "../../components/CardGrid/CardGrid";
+import TrackItem from "../../components/TrackItem/TrackItem";
 import styles from "./styles.module.css";
 
 const Artist = () => {
@@ -60,25 +61,15 @@ const Artist = () => {
 
       <div className={styles.section_title}>Popular</div>
       <div className={styles.tracks_container}>
-        {tracks &&
-          tracks.map((track, index) => {
-            return (
-              <div className={styles.track_row}>
-                <div className={styles.col}>
-                  <span>{index + 1}</span>
-                </div>
-                <div className={styles.track_details} key={track.id}>
-                  <img src={track.image} />
-                  <div className={styles.col}>
-                    <span className={styles.track_name}>{track.name}</span>
-                  </div>
-                </div>
-                <div className={styles.col}>
-                  <span>{msToMinutesAndSeconds(track.duration)}</span>
-                </div>
-              </div>
-            );
-          })}
+        {tracks.map((track, index) => (
+          <TrackItem
+            key={track.id}
+            index={index + 1}
+            imageUrl={track.image}
+            title={track.name}
+            duration={msToMinutesAndSeconds(track.duration)}
+          />
+        ))}
       </div>
 
       <div className={styles.section_title}>Discography</div>

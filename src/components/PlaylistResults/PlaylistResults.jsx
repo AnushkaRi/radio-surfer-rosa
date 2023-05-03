@@ -1,6 +1,7 @@
 import { FaClock } from "react-icons/fa";
 
 import { msToMinutesAndSeconds } from "../../services/Spotify";
+import TrackItem from "../TrackItem/TrackItem";
 import styles from "./styles.module.css";
 
 const PlaylistResults = ({ selectedPlaylist }) => {

@@ -69,6 +69,7 @@ const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
         ></input>
       </form>
+
       <div>
         <SearchResults
           search={search}

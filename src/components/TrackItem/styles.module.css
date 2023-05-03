@@ -1,0 +1,40 @@
+.tracks {
+  display: flex;
+  flex-flow: column;
+}
+
+.track_row {
+  display: grid;
+  grid-template-columns: 25px 2fr 0.1fr;
+  margin: 0 30px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.track_row:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 8px;
+}
+
+.col {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.track_details {
+  display: flex;
+  flex-direction: row;
+}
+
+.track_name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.track_details img {
+  margin-right: 25px;
+  height: 50px;
+}
