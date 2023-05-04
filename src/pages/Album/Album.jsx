@@ -67,26 +67,3 @@ const Album = () => {
 };
 
 export default Album;
-
-{
-  /*  {album.tracks?.items?.map((track, index) => {
-          return (
-            <div className={styles.track_container}>
-              <div className={styles.track_row}>
-                <div className={styles.col}>
-                  <span>{index + 1}</span>
-                </div>
-                <div className={styles.track_details} key={track.id}>
-                  <div className={styles.col}>
-                    <span className={styles.track_name}>{track.name}</span>
-                    <span>{track.artists.map((artist) => artist.name).join(" & ")}</span>
-                  </div>
-                </div>
-                <div className={styles.col}>
-                  <span>{msToMinutesAndSeconds(track.duration_ms)}</span>
-                </div>
-              </div>
-            </div>
-          );
-        })} */
-}

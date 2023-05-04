@@ -35,7 +35,20 @@ const PlaylistResults = ({ selectedPlaylist }) => {
             </div>
           </div>
         </div>
-        <div className={styles.tracks}>
+
+        {selectedPlaylist.tracks?.items?.map(({ track }, index) => (
+          <TrackItem
+            key={track.id}
+            index={index + 1}
+            imageUrl={track.album?.images?.[2].url}
+            title={track.name}
+            artist={track.artists?.map((artist) => artist.name).join(" & ")}
+            album={track.album?.name}
+            duration={msToMinutesAndSeconds(track.duration_ms)}
+          />
+        ))}
+
+        {/*  <div className={styles.tracks}>
           {selectedPlaylist.tracks?.items?.map(({ track }, index) => (
             <div className={styles.track_row} key={track.id} role="button" onClick={() => setTrack(track.name)}>
               <div className={styles.col}>
@@ -56,7 +69,7 @@ const PlaylistResults = ({ selectedPlaylist }) => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
     </div>
   );

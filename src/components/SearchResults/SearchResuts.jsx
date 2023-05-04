@@ -36,7 +36,7 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
           {search && <h2>Songs</h2>}
 
           {searchTrackResults.map((track) => (
-            <div className={styles.track_container}>
+            <div className={styles.tracks_container}>
               <TrackItem
                 key={track}
                 imageUrl={track.image}

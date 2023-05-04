@@ -27,6 +27,7 @@
 .track_details {
   display: flex;
   flex-direction: row;
+  margin-left: 10px;
 }
 
 .track_name {
