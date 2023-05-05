@@ -2,7 +2,7 @@
   grid-area: main-area;
   background-color: rgb(36, 36, 36);
   margin-left: 25px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 190px);
   overflow-y: scroll;
   flex: 100% 1 1;
 }

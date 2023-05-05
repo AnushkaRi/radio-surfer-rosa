@@ -1,4 +1,4 @@
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaTimes } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 import SearchResults from "../../components/SearchResults/SearchResuts";
@@ -55,19 +55,26 @@ const Search = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+  };
+
+  const clearSearchHandler = () => {
     setSearch("");
+    setSearchAlbumResults([]);
+    setSearchArtistResults([]);
+    setSearchTrackResults([]);
   };
 
   return (
     <div className={styles.search_container}>
       <form className={styles.search_bar} onSubmit={submitHandler}>
-        <FaSearch color="black" />
+        <FaSearch color="white" />
         <input
           className={styles.input}
           placeholder="Search for good music!"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         ></input>
+        {search && <FaTimes color="white" onClick={clearSearchHandler} />}
       </form>
 
       <div>

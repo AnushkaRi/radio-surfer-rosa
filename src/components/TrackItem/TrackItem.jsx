@@ -12,11 +12,7 @@ const TrackItem = ({ index, imageUrl, title, artist, album, duration }) => {
             <span>{artist}</span>
           </div>
         </div>
-        {album && (
-          <div className={styles.col}>
-            <span>{album}</span>
-          </div>
-        )}
+        <div className={styles.col}>{album && <span>{album}</span>}</div>
         <div className={styles.col}>
           <span>{duration}</span>
         </div>

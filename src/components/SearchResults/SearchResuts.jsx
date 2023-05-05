@@ -33,12 +33,13 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
         </div>
 
         <div className={styles.results}>
-          {search && <h2>Songs</h2>}
+          {search && <h2 className={styles.song_header}>Songs</h2>}
 
-          {searchTrackResults.map((track) => (
+          {searchTrackResults.map((track, index) => (
             <div className={styles.tracks_container}>
               <TrackItem
                 key={track}
+                index={index + 1}
                 imageUrl={track.image}
                 title={track.title}
                 artist={track.artist}
