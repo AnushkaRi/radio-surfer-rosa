@@ -4,17 +4,26 @@
 }
 
 .track_row {
+  position: relative;
   display: grid;
   grid-template-columns: 25px 3fr 2fr 0.1fr;
   margin: 0 30px;
   padding: 10px;
   cursor: pointer;
-  transition: 0.5s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .track_row:hover {
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 8px;
+}
+
+.track_row:hover .track_playbtn {
+  opacity: 1;
+}
+
+.track_row:hover .index {
+  opacity: 0;
 }
 
 .col {
@@ -27,7 +36,7 @@
 .track_details {
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .track_name {
@@ -38,4 +47,18 @@
 .track_details img {
   margin-right: 25px;
   height: 50px;
+}
+
+.track_playbtn {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  opacity: 0;
+  padding: 17px 5px;
+  transition: 0.2s ease-in-out;
+}
+
+.index {
+  opacity: 1;
+  transition: 0.2s ease-in-out;
 }

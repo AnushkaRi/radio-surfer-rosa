@@ -30,7 +30,7 @@ const PlaylistResults = ({ selectedPlaylist }) => {
             </div>
             <div className={styles.col}>
               <span>
-                <FaClock />
+                <FaClock color="white" />
               </span>
             </div>
           </div>

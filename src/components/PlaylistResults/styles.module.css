@@ -42,7 +42,7 @@
   grid-template-columns: 25px 3fr 2fr 0.1fr;
   gap: 15px;
   margin: 0 30px;
-  padding: 10px 5px;
+  padding: 10px;
   border-bottom: 1px solid;
   position: sticky;
 }

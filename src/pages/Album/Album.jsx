@@ -45,8 +45,8 @@ const Album = () => {
               <span>Title</span>
             </div>
             <div className={styles.col}>
-              <span>
-                <FaClock />
+              <span className={styles.clock}>
+                <FaClock color="white" />
               </span>
             </div>
           </div>
