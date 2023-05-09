@@ -1,21 +1,24 @@
 import { useState } from "react";
-import { BsFillPlayCircleFill, BsFillPauseCircleFill, BsShuffle } from "react-icons/bs";
+import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
 import { CgPlayTrackNext, CgPlayTrackPrev } from "react-icons/cg";
-import { FiRepeat } from "react-icons/fi";
 
 import apiClient from "../../services/Spotify";
 import styles from "./styles.module.css";
 
 const PlayerControls = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [changeTrack, setChangeTrack] = useState();
+  /*  const [changeTrack, setChangeTrack] = useState(); */
+  /* const [currentTrack, setCurrentTrack] = useState([]); */
 
   const handleChangeTrack = async (type) => {
     apiClient.post(`me/player/${type}`).then((response) => {
-      setChangeTrack(response);
       console.log(response);
     });
   };
+
+  apiClient.get(`me/player/currently-playing`).then((response) => {
+    console.log(response);
+  });
 
   const changePlayPause = () => {
     setIsPlaying(!isPlaying);
@@ -24,9 +27,6 @@ const PlayerControls = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.controls_container}>
-        <div className={styles.shuffle}>
-          <BsShuffle />
-        </div>
         <div className={styles.previous} onClick={() => handleChangeTrack("previous")}>
           <CgPlayTrackPrev />
         </div>
@@ -35,9 +35,6 @@ const PlayerControls = () => {
         </div>
         <div className={styles.next} onClick={() => handleChangeTrack("next")}>
           <CgPlayTrackNext />
-        </div>
-        <div className={styles.repeat}>
-          <FiRepeat />
         </div>
       </div>
       <div className={styles.progress_container}>

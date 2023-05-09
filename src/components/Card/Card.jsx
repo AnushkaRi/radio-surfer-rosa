@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import PlayButton from "../PlayButton/PlayButton";
 import styles from "./styles.module.css";
 
 const Card = ({ link, imageUrl, title, description, name }) => {
@@ -8,6 +9,9 @@ const Card = ({ link, imageUrl, title, description, name }) => {
       <div className={styles.card}>
         <div className={styles.image_container}>
           <img src={imageUrl} alt="" className={styles.image}></img>
+          <div className={styles.track_playbtn}>
+            <PlayButton />
+          </div>
         </div>
         <div className={styles.title_container}>
           <div className={styles.title}>{title}</div>

@@ -4,6 +4,7 @@ import apiClient from "../../services/Spotify";
 import { showTimeOfDay } from "../../helpers/TimeOfDay";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import Card from "../../components/Card/Card";
+import PlayButton from "../../components/PlayButton/PlayButton";
 import styles from "./styles.module.css";
 
 const Home = () => {

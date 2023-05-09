@@ -51,8 +51,8 @@
 
 .track_playbtn {
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   opacity: 0;
   padding: 17px 5px;
   transition: 0.2s ease-in-out;
