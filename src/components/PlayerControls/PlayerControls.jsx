@@ -7,21 +7,24 @@ import styles from "./styles.module.css";
 
 const PlayerControls = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  /*  const [changeTrack, setChangeTrack] = useState(); */
-  /* const [currentTrack, setCurrentTrack] = useState([]); */
+  const [changeTrack, setChangeTrack] = useState();
 
   const handleChangeTrack = async (type) => {
     apiClient.post(`me/player/${type}`).then((response) => {
-      console.log(response);
+      return response;
     });
   };
 
   apiClient.get(`me/player/currently-playing`).then((response) => {
-    console.log(response);
+    return response;
   });
 
-  const changePlayPause = () => {
+  const changeState = () => {
+    const state = isPlaying ? "pause" : "play";
     setIsPlaying(!isPlaying);
+    apiClient.put(`me/player/${state}`).then((response) => {
+      return response;
+    });
   };
 
   return (
@@ -30,8 +33,8 @@ const PlayerControls = () => {
         <div className={styles.previous} onClick={() => handleChangeTrack("previous")}>
           <CgPlayTrackPrev />
         </div>
-        <div className={styles.state} onClick={changePlayPause}>
-          {isPlaying ? <BsFillPauseCircleFill /> : <BsFillPlayCircleFill />}
+        <div className={styles.state}>
+          {isPlaying ? <BsFillPauseCircleFill onClick={changeState} /> : <BsFillPlayCircleFill onClick={changeState} />}
         </div>
         <div className={styles.next} onClick={() => handleChangeTrack("next")}>
           <CgPlayTrackNext />
