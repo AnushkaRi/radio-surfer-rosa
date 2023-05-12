@@ -6,7 +6,27 @@
 }
 
 .volume_icon {
+  position: relative;
+  display: inline-block;
   margin-right: 10px;
+}
+
+.volume_icon .tooltip {
+  visibility: hidden;
+  background-color: rgb(36, 36, 36);
+  color: rgb(255, 255, 255);
+  border-radius: 7px;
+  padding: 5px 10px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  margin-left: -30px;
+  margin-bottom: 7px;
+  font-size: 0.8rem;
+}
+
+.volume_icon:hover .tooltip {
+  visibility: visible;
 }
 
 .volume_slider {
@@ -28,7 +48,7 @@
 }
 
 .volume_slider input[type="range"]::-webkit-slider-runnable-track {
-  height: 10+5px;
+  height: 10px;
   border-radius: 10px;
 }
 
@@ -41,8 +61,9 @@
   border: 2px solid rgb(254, 0, 173);
   box-shadow: -407px 0 0 400px rgb(254, 0, 173);
   cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
 .volume_slider input::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
