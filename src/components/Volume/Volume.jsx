@@ -14,29 +14,31 @@ const Volume = () => {
     });
   };
 
-  const toggleMute = () => {
+  /*  const toggleMute = () => {
     setMuted(!muted);
+  }; */
+
+  const handleUnmute = () => {
+    setMuted(!muted);
+    setVolume(50);
+    handleVolumeChange();
+  };
+
+  const handleMute = () => {
+    setMuted(!muted);
+    setVolume(0);
+    handleVolumeChange();
   };
 
   return (
     <div className={styles.volume_container}>
       <div className={styles.volume_icon}>
         {muted ? (
-          <FaVolumeUp
-            color="white"
-            onClick={() => {
-              toggleMute(), setVolume(0);
-            }}
-          />
+          <FaVolumeMute color="white" onClick={handleUnmute} />
         ) : (
-          <FaVolumeMute
-            color="white"
-            onClick={() => {
-              toggleMute(), setVolume(50);
-            }}
-          />
+          <FaVolumeUp color="white" onClick={handleMute} />
         )}
-        {muted ? <span className={styles.tooltip}>Mute</span> : <span className={styles.tooltip}>Unmute</span>}
+        {muted ? <span className={styles.tooltip}>Unmute</span> : <span className={styles.tooltip}>Mute</span>}
       </div>
       <div className={styles.volume_slider}>
         <input
