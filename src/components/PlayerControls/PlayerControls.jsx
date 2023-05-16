@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
 import { CgPlayTrackNext, CgPlayTrackPrev } from "react-icons/cg";
 
 import apiClient from "../../services/Spotify";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import styles from "./styles.module.css";
 
 const PlayerControls = () => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [changeTrack, setChangeTrack] = useState();
 
   const handleChangeTrack = async (type) => {
     apiClient.post(`me/player/${type}`).then((response) => {
       return response;
     });
-  };
 
-  apiClient.get(`me/player/currently-playing`).then((response) => {
-    return response;
-  });
+    apiClient.get(`me/player/currently-playing`).then((response) => {
+      return response;
+    });
+  };
 
   const changeState = () => {
     const state = isPlaying ? "pause" : "play";
