@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import apiClient from "../../services/Spotify";
 import styles from "./styles.module.css";
 
-const CurrentTrack = () => {
+const CurrentTrack = ({}) => {
   const [currentTrack, setCurrentTrack] = useState([]);
 
   useEffect(() => {
