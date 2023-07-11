@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import apiClient from "../../services/Spotify";
@@ -6,30 +6,36 @@ import styles from "./styles.module.css";
 
 const Volume = () => {
   const [volume, setVolume] = useState(50);
-  const [isMuted, setIsMuted] = useState(false);
 
   const handleVolumeChange = async () => {
-    apiClient.put(`me/player/volume?volume_percent=${volume}`).then((response) => {
-      return response;
-    });
+    apiClient
+      .put(`me/player/volume?volume_percent=${volume}`)
+      .then((response) => {
+        return response;
+      });
   };
 
   const handleMute = () => {
-    if (isMuted) {
-      setVolume((prevVolume) => (prevVolume === 0 ? 50 : prevVolume));
-      setIsMuted(false);
-    } else {
-      setVolume(0);
-      setIsMuted(true);
-    }
-    handleVolumeChange();
+    setVolume((pv) => (pv === 0 ? 50 : 0));
   };
+
+  useEffect(() => {
+    handleVolumeChange();
+  }, [volume]);
 
   return (
     <div className={styles.volume_container}>
       <div className={styles.volume_icon} onClick={handleMute}>
-        {isMuted ? <FaVolumeUp color="white" /> : <FaVolumeMute color="white" />}
-        {isMuted ? <span className={styles.tooltip}>Mute</span> : <span className={styles.tooltip}>Unmute</span>}
+        {volume === 0 ? (
+          <FaVolumeMute color="white" />
+        ) : (
+          <FaVolumeUp color="white" />
+        )}
+        {volume === 0 ? (
+          <span className={styles.tooltip}>Unmute</span>
+        ) : (
+          <span className={styles.tooltip}>Mute</span>
+        )}
       </div>
       <div className={styles.volume_slider}>
         <input
