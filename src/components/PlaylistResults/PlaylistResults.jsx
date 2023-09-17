@@ -4,7 +4,7 @@ import { msToMinutesAndSeconds } from "../../services/Spotify";
 import TrackItem from "../TrackItem/TrackItem";
 import styles from "./styles.module.css";
 
-const PlaylistResults = ({ selectedPlaylist, onTrackClick }) => {
+const PlaylistResults = ({ selectedPlaylist }) => {
   return (
     <div className={styles.playlist_container}>
       <div className={styles.playlist_details}>
@@ -45,7 +45,6 @@ const PlaylistResults = ({ selectedPlaylist, onTrackClick }) => {
             artist={track.artists?.map((artist) => artist.name).join(" & ")}
             album={track.album?.name}
             duration={msToMinutesAndSeconds(track.duration_ms)}
-            onClick={() => onTrackClick(track)}
           />
         ))}
       </div>

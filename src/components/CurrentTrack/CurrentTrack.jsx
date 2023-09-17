@@ -10,7 +10,6 @@ const CurrentTrack = ({}) => {
     apiClient.get(`me/player/currently-playing`).then((response) => {
       if (response.data !== "") {
         setCurrentTrack(response.data.item);
-        console.log(response);
       }
     });
   }, []);
@@ -22,7 +21,10 @@ const CurrentTrack = ({}) => {
       </div>
       <div className={styles.track_info} key={currentTrack.id}>
         <span className={styles.track_name}>{currentTrack.name}</span>
-        <span className={styles.artist}> {currentTrack.artists?.map((artist) => artist.name).join(" & ")} </span>
+        <span className={styles.artist}>
+          {" "}
+          {currentTrack.artists?.map((artist) => artist.name).join(" & ")}{" "}
+        </span>
       </div>
     </div>
   );

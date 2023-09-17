@@ -6,7 +6,12 @@ import CardGrid from "../CardGrid/CardGrid";
 import TrackItem from "../TrackItem/TrackItem";
 import styles from "./styles.module.css";
 
-const SearchResults = ({ search, searchArtistResults, searchTrackResults, searchAlbumResults }) => {
+const SearchResults = ({
+  search,
+  searchArtistResults,
+  searchTrackResults,
+  searchAlbumResults,
+}) => {
   return (
     <div className={styles.results_wrapper}>
       <div className={styles.results_container}>
@@ -71,22 +76,3 @@ const SearchResults = ({ search, searchArtistResults, searchTrackResults, search
 };
 
 export default SearchResults;
-
-/* {searchTrackResults.map((track) => {
-  return (
-    <div className={styles.track_container}>
-      <div className={styles.track_row}>
-        <div className={styles.track_details} key={track.id}>
-          <img src={track.image} />
-          <div className={styles.col}>
-            <span className={styles.track_name}>{track.title}</span>
-            <span>{track.artist}</span>
-          </div>
-        </div>
-        <div className={styles.col}>
-          <span>{msToMinutesAndSeconds(track.duration)}</span>
-        </div>
-      </div>
-    </div>
-  );
-})} */

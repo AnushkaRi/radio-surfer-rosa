@@ -13,7 +13,6 @@ const UserBadge = () => {
   useEffect(() => {
     apiClient.get("me").then((response) => {
       setData(response.data);
-      console.log(response.data);
     });
   }, []);
 
@@ -39,7 +38,11 @@ const UserBadge = () => {
 
       {isOpen && (
         <div className={styles.menu}>
-          <button className={styles.menu_btn} type="button" onClick={handleLogout}>
+          <button
+            className={styles.menu_btn}
+            type="button"
+            onClick={handleLogout}
+          >
             Logout
           </button>
         </div>

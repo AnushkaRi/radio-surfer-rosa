@@ -7,7 +7,6 @@ import styles from "./styles.module.css";
 const Header = () => {
   const navigate = useNavigate();
 
-  // go back & forward
   const goBack = () => {
     navigate(-1);
   };

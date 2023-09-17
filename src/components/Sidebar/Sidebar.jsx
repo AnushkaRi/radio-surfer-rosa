@@ -12,7 +12,6 @@ const Sidebar = () => {
   useEffect(() => {
     apiClient.get("me/playlists").then((response) => {
       setPlaylists(response.data.items);
-      console.log(response.data.items);
     });
   }, []);
 
@@ -36,7 +35,11 @@ const Sidebar = () => {
       </div>
       <div className={styles.playlists_container}>
         {playlists?.map((playlist) => (
-          <button key={playlist.id} className={styles.btn} onClick={() => navigate(`/playlist/${playlist.id}`)}>
+          <button
+            key={playlist.id}
+            className={styles.btn}
+            onClick={() => navigate(`/playlist/${playlist.id}`)}
+          >
             {playlist.name}
           </button>
         ))}
