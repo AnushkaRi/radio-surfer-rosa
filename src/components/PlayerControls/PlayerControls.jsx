@@ -3,7 +3,6 @@ import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
 import { CgPlayTrackNext, CgPlayTrackPrev } from "react-icons/cg";
 
 import apiClient from "../../services/Spotify";
-import ProgressBar from "../ProgressBar/ProgressBar";
 import styles from "./styles.module.css";
 
 const PlayerControls = () => {
@@ -30,20 +29,22 @@ const PlayerControls = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.controls_container}>
-        <div className={styles.previous} onClick={() => handleChangeTrack("previous")}>
+        <div
+          className={styles.previous}
+          onClick={() => handleChangeTrack("previous")}
+        >
           <CgPlayTrackPrev />
         </div>
         <div className={styles.state}>
-          {isPlaying ? <BsFillPauseCircleFill onClick={changeState} /> : <BsFillPlayCircleFill onClick={changeState} />}
+          {isPlaying ? (
+            <BsFillPauseCircleFill onClick={changeState} />
+          ) : (
+            <BsFillPlayCircleFill onClick={changeState} />
+          )}
         </div>
         <div className={styles.next} onClick={() => handleChangeTrack("next")}>
           <CgPlayTrackNext />
         </div>
-      </div>
-      <div className={styles.progress_container}>
-        <div className={styles.current_time}>00:00</div>
-        <input type="range" className={styles.progress_bar} />
-        <div className={styles.duration}>00:00</div>
       </div>
     </div>
   );
