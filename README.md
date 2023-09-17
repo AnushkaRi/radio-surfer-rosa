@@ -10,5 +10,5 @@ For now only in desktop version.
 
 ## Search Page
 
-## Playlist 
+## Playlist Page
 
