@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import { msToMinutesAndSeconds } from "../../services/Spotify";
 import Card from "../Card/Card";
 import CardGrid from "../CardGrid/CardGrid";
 import TrackItem from "../TrackItem/TrackItem";
+import { msToMinutesAndSeconds } from "../../helpers/time";
 import styles from "./styles.module.css";
 
 const SearchResults = ({
@@ -41,12 +41,12 @@ const SearchResults = ({
           {search && <h2 className={styles.song_header}>Songs</h2>}
 
           {searchTrackResults.map((track, index) => (
-            <div className={styles.tracks_container}>
+            <div key={index} className={styles.tracks_container}>
               <TrackItem
                 key={track}
                 index={index + 1}
                 imageUrl={track.image}
-                title={track.title}
+                name={track.title}
                 artist={track.artist}
                 duration={msToMinutesAndSeconds(track.duration)}
               />

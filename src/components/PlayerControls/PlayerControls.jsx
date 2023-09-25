@@ -1,28 +1,55 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { BsFillPlayCircleFill, BsFillPauseCircleFill } from "react-icons/bs";
 import { CgPlayTrackNext, CgPlayTrackPrev } from "react-icons/cg";
 
-import apiClient from "../../services/Spotify";
+import { apiClient } from "../../services/spotify";
+import { getCurrentlyPlayingTrack } from "../../services/spotify";
+import { PlayerDispatchContext } from "../../PlayerContext";
+import { msToMinutesAndSeconds } from "../../helpers/time";
 import styles from "./styles.module.css";
 
-const PlayerControls = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const PlayerControls = ({ player }) => {
+  const dispatch = useContext(PlayerDispatchContext);
+  const [progress, setProgress] = useState(player.progress ?? 0);
 
   const handleChangeTrack = async (type) => {
-    apiClient.post(`me/player/${type}`).then((response) => {
-      return response;
-    });
-
-    apiClient.get(`me/player/currently-playing`).then((response) => {
-      return response;
+    await apiClient.post(`me/player/${type}`);
+    const currentlyPlaying = await getCurrentlyPlayingTrack();
+    dispatch({
+      type: "change-track",
+      track: currentlyPlaying.item,
+      isPlaying: currentlyPlaying.is_playing,
     });
   };
 
-  const changeState = () => {
-    const state = isPlaying ? "pause" : "play";
-    setIsPlaying(!isPlaying);
-    apiClient.put(`me/player/${state}`).then((response) => {
-      return response;
+  useEffect(() => {
+    if (player.isPlaying) {
+      if (player.progress) {
+        setProgress(player.progress);
+      }
+
+      const intervalId = setInterval(() => {
+        setProgress((prevProgress) => {
+          if (prevProgress > player.track?.duration_ms) {
+            clearInterval(intervalId);
+            return 0;
+          }
+
+          return prevProgress + 1000;
+        });
+      }, 1000);
+
+      return () => clearInterval(intervalId);
+    }
+  }, [player.progress, player.isPlaying, player.track?.duration_ms]);
+
+  const togglePlayback = () => {
+    const state = player.isPlaying ? "pause" : "play";
+
+    apiClient.put(`me/player/${state}`);
+
+    dispatch({
+      type: player.isPlaying ? "stop-playback" : "start-playback",
     });
   };
 
@@ -36,14 +63,31 @@ const PlayerControls = () => {
           <CgPlayTrackPrev />
         </div>
         <div className={styles.state}>
-          {isPlaying ? (
-            <BsFillPauseCircleFill onClick={changeState} />
+          {player.isPlaying ? (
+            <BsFillPauseCircleFill onClick={togglePlayback} />
           ) : (
-            <BsFillPlayCircleFill onClick={changeState} />
+            <BsFillPlayCircleFill onClick={togglePlayback} />
           )}
         </div>
         <div className={styles.next} onClick={() => handleChangeTrack("next")}>
           <CgPlayTrackNext />
+        </div>
+      </div>
+      <div className={styles.progress_container}>
+        <div className={styles.current_time}>
+          {msToMinutesAndSeconds(progress)}
+        </div>
+        <input
+          type="range"
+          className={styles.progress_bar}
+          min={0}
+          max={player.track?.duration_ms ?? 100}
+          value={progress}
+        />
+        <div className={styles.duration}>
+          {player.track?.duration_ms
+            ? msToMinutesAndSeconds(player.track?.duration_ms)
+            : "--:--"}
         </div>
       </div>
     </div>

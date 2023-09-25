@@ -2,17 +2,19 @@ import { MdHomeFilled, MdSearch, MdWaves } from "react-icons/md";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import apiClient from "../../services/Spotify";
 import styles from "./styles.module.css";
+import { getPlaylists } from "../../services/spotify";
 
 const Sidebar = () => {
   const [playlists, setPlaylists] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    apiClient.get("me/playlists").then((response) => {
-      setPlaylists(response.data.items);
-    });
+    async function fetchPlaylists() {
+      const playlists = await getPlaylists();
+      setPlaylists(playlists.items);
+    }
+    fetchPlaylists();
   }, []);
 
   return (

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { FaClock } from "react-icons/fa";
 
 import TrackItem from "../../components/TrackItem/TrackItem";
-import apiClient from "../../services/Spotify";
-import { msToMinutesAndSeconds } from "../../services/Spotify";
+import { getAlbum } from "../../services/spotify";
+import { msToMinutesAndSeconds } from "../../helpers/time";
 import styles from "./styles.module.css";
 
 const Album = () => {
@@ -12,10 +12,11 @@ const Album = () => {
   const [album, setAlbum] = useState([]);
 
   useEffect(() => {
-    apiClient.get(`albums/${params.id}`).then((response) => {
-      setAlbum(response.data);
-      console.log(response);
-    });
+    async function fetchAlbum() {
+      const album = await getAlbum(params.id);
+      setAlbum(album);
+    }
+    fetchAlbum();
   }, [params]);
 
   return (
@@ -26,11 +27,17 @@ const Album = () => {
           <span className={styles.type}>{album.album_type}</span>
           <span className={styles.album_name}>{album.name}</span>
           <div className={styles.info_inline}>
-            <span className={styles.artist_name}>{album.artists?.map((artist) => artist.name).join(" & ")}</span>
+            <span className={styles.artist_name}>
+              {album.artists?.map((artist) => artist.name).join(" & ")}
+            </span>
             <span>&#x2022;</span>
-            <span className={styles.date}>{album.release_date?.split("-")[0]}</span>
+            <span className={styles.date}>
+              {album.release_date?.split("-")[0]}
+            </span>
             <span>&#x2022;</span>
-            <span className={styles.total_tracks}>{album.total_tracks} songs</span>
+            <span className={styles.total_tracks}>
+              {album.total_tracks} songs
+            </span>
           </div>
         </div>
       </div>
@@ -56,7 +63,7 @@ const Album = () => {
           <TrackItem
             key={track.id}
             index={index + 1}
-            title={track.name}
+            name={track.name}
             artist={track.artists.map((artist) => artist.name).join(" & ")}
             duration={msToMinutesAndSeconds(track.duration_ms)}
           />
@@ -67,3 +74,5 @@ const Album = () => {
 };
 
 export default Album;
+
+/* <TrackItem key={track.id} index={index + 1} track={track} /> */

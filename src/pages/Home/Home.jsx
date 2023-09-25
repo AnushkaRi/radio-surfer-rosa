@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
-import apiClient from "../../services/Spotify";
-import { showTimeOfDay } from "../../helpers/TimeOfDay";
+import { apiClient } from "../../services/spotify";
+import { showTimeOfDay } from "../../helpers/time";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import Card from "../../components/Card/Card";
-import PlayButton from "../../components/PlayButton/PlayButton";
+
 import styles from "./styles.module.css";
 
 const Home = () => {
@@ -13,34 +13,36 @@ const Home = () => {
   const timeOfday = showTimeOfDay();
 
   useEffect((limit = 6, timeRange = "medium_term") => {
-    apiClient.get(`me/top/artists?limit=${limit}&time_range=${timeRange}`).then((response) => {
-      setTopArtists(
-        response.data.items.map((artist) => {
-          return {
-            image: artist.images[1].url,
-            name: artist.name,
-            type: artist.type,
-            id: artist.id,
-          };
-        }),
-      );
-      console.log(response.data);
-    });
+    apiClient
+      .get(`me/top/artists?limit=${limit}&time_range=${timeRange}`)
+      .then((response) => {
+        setTopArtists(
+          response.data.items.map((artist) => {
+            return {
+              image: artist.images[1].url,
+              name: artist.name,
+              type: artist.type,
+              id: artist.id,
+            };
+          })
+        );
+      });
 
-    apiClient.get(`me/top/tracks?limit=${limit}&time_range=${timeRange}`).then((response) => {
-      setTopTracks(
-        response.data.items.map((track) => {
-          return {
-            name: track.name,
-            album: track.album.name,
-            artists: track.artists.map((artist) => artist.name).join(" & "),
-            image: track.album.images[1].url,
-            id: track.id,
-          };
-        }),
-      );
-      console.log(response.data);
-    });
+    apiClient
+      .get(`me/top/tracks?limit=${limit}&time_range=${timeRange}`)
+      .then((response) => {
+        setTopTracks(
+          response.data.items.map((track) => {
+            return {
+              name: track.name,
+              album: track.album.name,
+              artists: track.artists.map((artist) => artist.name).join(" & "),
+              image: track.album.images[1].url,
+              id: track.id,
+            };
+          })
+        );
+      });
   }, []);
 
   return (

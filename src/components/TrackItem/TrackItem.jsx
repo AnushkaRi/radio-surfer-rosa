@@ -1,15 +1,34 @@
+import { useContext } from "react";
+
 import PlayButton from "../PlayButton/PlayButton";
 import styles from "./styles.module.css";
+import { startPlayback } from "../../services/spotify";
+import { getCurrentlyPlayingTrack } from "../../services/spotify";
+import { PlayerDispatchContext } from "../../PlayerContext";
 
-const TrackItem = ({ index, imageUrl, title, artist, album, duration }) => {
+const TrackItem = ({ index, image, name, artist, album, duration }) => {
+  const dispatch = useContext(PlayerDispatchContext);
+
+  const play = async () => {
+    await startPlayback([uri]);
+    const currentlyPlaying = await getCurrentlyPlayingTrack();
+    dispatch({
+      type: "change-track",
+      track: currentlyPlaying.item,
+      isPlaying: currentlyPlaying.is_playing,
+    });
+  };
+
   return (
     <div className={styles.tracks}>
       <div className={styles.track_row}>
-        <div className={styles.col}>{index && <span className={styles.index}>{index}</span>}</div>
+        <div className={styles.col}>
+          {index && <span className={styles.index}>{index}</span>}
+        </div>
         <div className={styles.track_details}>
-          {imageUrl && <img src={imageUrl} alt="track"></img>}
+          {image && <img src={image} alt="track"></img>}
           <div className={styles.col}>
-            <span className={styles.track_name}>{title}</span>
+            <span className={styles.track_name}>{name}</span>
             <span>{artist}</span>
           </div>
         </div>
@@ -17,7 +36,7 @@ const TrackItem = ({ index, imageUrl, title, artist, album, duration }) => {
         <div className={styles.col}>
           <span>{duration}</span>
         </div>
-        <div className={styles.track_playbtn}>
+        <div type="button" className={styles.track_playbtn} onClick={play}>
           <PlayButton />
         </div>
       </div>

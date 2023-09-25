@@ -1,4 +1,4 @@
-import { authorize } from "../../services/Authorization";
+import { authorize } from "../../services/authorization";
 
 import style from "./styles.module.css";
 

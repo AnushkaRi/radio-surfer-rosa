@@ -1,6 +1,6 @@
 import { FaClock } from "react-icons/fa";
 
-import { msToMinutesAndSeconds } from "../../services/Spotify";
+import { msToMinutesAndSeconds } from "../../helpers/time";
 import TrackItem from "../TrackItem/TrackItem";
 import styles from "./styles.module.css";
 
@@ -40,8 +40,8 @@ const PlaylistResults = ({ selectedPlaylist }) => {
           <TrackItem
             key={track.id}
             index={index + 1}
-            imageUrl={track.album?.images?.[2].url}
-            title={track.name}
+            image={track.album?.images?.[2].url}
+            name={track.name}
             artist={track.artists?.map((artist) => artist.name).join(" & ")}
             album={track.album?.name}
             duration={msToMinutesAndSeconds(track.duration_ms)}

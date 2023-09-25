@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { msToMinutesAndSeconds } from "../../services/Spotify";
 
-import apiClient from "../../services/Spotify";
 import Card from "../../components/Card/Card";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import TrackItem from "../../components/TrackItem/TrackItem";
+import { msToMinutesAndSeconds } from "../../helpers/time";
 import styles from "./styles.module.css";
+import { getArtist, apiClient } from "../../services/spotify";
 
 const Artist = () => {
   const params = useParams();
@@ -15,40 +15,44 @@ const Artist = () => {
   const [albums, setAlbums] = useState([]);
 
   useEffect(() => {
-    apiClient.get(`artists/${params.id}`).then((response) => {
-      setArtist(response.data);
-      console.log(response);
-    });
+    async function fetchArtist() {
+      const artist = await getArtist(params.id);
+      setArtist(artist);
+    }
+    fetchArtist();
 
-    apiClient.get(`artists/${params.id}/top-tracks?market=US`).then((response) => {
-      setTracks(
-        response.data.tracks.map((track) => {
-          return {
-            id: track.id,
-            image: track.album.images[2].url,
-            name: track.name,
-            duration: track.duration_ms,
-          };
-        }),
-      );
-      console.log("r1", response);
-    });
+    apiClient
+      .get(`artists/${params.id}/top-tracks?market=US`)
+      .then((response) => {
+        setTracks(
+          response.data.tracks.map((track) => {
+            return {
+              id: track.id,
+              image: track.album.images[2].url,
+              name: track.name,
+              duration: track.duration_ms,
+              uri: track.uri,
+            };
+          })
+        );
+      });
 
-    apiClient.get(`artists/${params.id}/albums?include_groups=album`).then((response) => {
-      setAlbums(
-        response.data.items.map((album) => {
-          return {
-            image: album.images[1].url,
-            title: album.name,
-            year: album.release_date.split("-")[0],
-            artist: album.artists[0].name,
-            id: album.id,
-          };
-        }),
-      );
-      console.log("r4", response);
-    });
-  }, []);
+    apiClient
+      .get(`artists/${params.id}/albums?include_groups=album`)
+      .then((response) => {
+        setAlbums(
+          response.data.items.map((album) => {
+            return {
+              image: album.images[1].url,
+              title: album.name,
+              year: album.release_date.split("-")[0],
+              artist: album.artists[0].name,
+              id: album.id,
+            };
+          })
+        );
+      });
+  }, [params.id]);
 
   return (
     <div className={styles.artist_container}>
@@ -65,8 +69,8 @@ const Artist = () => {
           <TrackItem
             key={track.id}
             index={index + 1}
-            imageUrl={track.image}
-            title={track.name}
+            image={track.image}
+            name={track.name}
             duration={msToMinutesAndSeconds(track.duration)}
           />
         ))}

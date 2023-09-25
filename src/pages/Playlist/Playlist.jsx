@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import apiClient from "../../services/Spotify";
+import { apiClient } from "../../services/spotify";
 import PlaylistResults from "../../components/PlaylistResults/PlaylistResults";
 
 const Playlist = () => {
@@ -11,7 +11,6 @@ const Playlist = () => {
   useEffect(() => {
     apiClient.get(`playlists/${params.id}`).then((response) => {
       setSelectedPlaylist(response.data);
-      console.log(response.data);
     });
   }, [params.id]);
 

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-import apiClient from "../../services/Spotify";
+import { apiClient } from "../../services/spotify";
 import styles from "./styles.module.css";
 
 const UserBadge = () => {
