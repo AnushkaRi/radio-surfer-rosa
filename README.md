@@ -28,4 +28,4 @@ Showing your Spotify Playlists.
 ## Development
  `npm run dev`: Run the app in development mode.
 
-**IMPORTANT NOTE:** Use your own Spotify WEB Api to run this weather app.
+**IMPORTANT NOTE:** Use your own Spotify WEB Api to run this app.
