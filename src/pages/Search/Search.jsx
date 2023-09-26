@@ -13,7 +13,7 @@ const Search = () => {
 
   useEffect(() => {
     apiClient
-      .get(`search?q=` + search + `&type=artist,track,album&limit=10`)
+      .get(`search?q=` + search + `&type=artist%2Calbum%2Ctrack`)
       .then((response) => {
         setSearchArtistResults(
           response.data.artists.items.slice(0, 1).map((artist) => {

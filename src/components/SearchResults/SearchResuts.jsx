@@ -20,7 +20,11 @@ const SearchResults = ({
 
           {searchArtistResults.map((artist) => {
             return (
-              <Link to={`/artist/${artist?.id}`} className={styles.link_text}>
+              <Link
+                key={artist.id}
+                to={`/artist/${artist?.id}`}
+                className={styles.link_text}
+              >
                 <div className={styles.artist_container} key={artist.id}>
                   <div className={styles.artist_image}>
                     <img src={artist.image} alt="artist" />
