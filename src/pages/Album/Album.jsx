@@ -63,8 +63,7 @@ const Album = () => {
           <TrackItem
             key={track.id}
             index={index + 1}
-            name={track.name}
-            artist={track.artists.map((artist) => artist.name).join(" & ")}
+            track={track}
             duration={msToMinutesAndSeconds(track.duration_ms)}
           />
         ))}
@@ -75,4 +74,11 @@ const Album = () => {
 
 export default Album;
 
-/* <TrackItem key={track.id} index={index + 1} track={track} /> */
+/*  <TrackItem
+            key={track.id}
+            index={index + 1}
+            name={track.name}
+            artist={track.artists.map((artist) => artist.name).join(" & ")}
+            duration={msToMinutesAndSeconds(track.duration_ms)}
+            uri={track.uri}
+          />*/

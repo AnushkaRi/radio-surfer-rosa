@@ -6,7 +6,7 @@ import { startPlayback } from "../../services/spotify";
 import { getCurrentlyPlayingTrack } from "../../services/spotify";
 import { PlayerDispatchContext } from "../../PlayerContext";
 
-const TrackItem = ({ index, image, name, artist, album, duration }) => {
+const TrackItem = ({ index, image, name, artist, album, duration, uri }) => {
   const dispatch = useContext(PlayerDispatchContext);
 
   const play = async () => {

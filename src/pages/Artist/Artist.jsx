@@ -72,6 +72,7 @@ const Artist = () => {
             image={track.image}
             name={track.name}
             duration={msToMinutesAndSeconds(track.duration)}
+            uri={track.uri}
           />
         ))}
       </div>

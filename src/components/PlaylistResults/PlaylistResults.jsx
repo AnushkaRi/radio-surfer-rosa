@@ -45,6 +45,7 @@ const PlaylistResults = ({ selectedPlaylist }) => {
             artist={track.artists?.map((artist) => artist.name).join(" & ")}
             album={track.album?.name}
             duration={msToMinutesAndSeconds(track.duration_ms)}
+            uri={track.uri}
           />
         ))}
       </div>

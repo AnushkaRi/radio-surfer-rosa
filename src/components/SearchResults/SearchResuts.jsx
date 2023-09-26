@@ -49,6 +49,7 @@ const SearchResults = ({
                 name={track.title}
                 artist={track.artist}
                 duration={msToMinutesAndSeconds(track.duration)}
+                uri={track.uri}
               />
             </div>
           ))}
