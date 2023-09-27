@@ -82,7 +82,7 @@ const PlayerControls = ({ player }) => {
           className={styles.progress_bar}
           min={0}
           max={player.track?.duration_ms ?? 100}
-          value={progress}
+          defaultValue={progress}
         />
         <div className={styles.duration}>
           {player.track?.duration_ms
