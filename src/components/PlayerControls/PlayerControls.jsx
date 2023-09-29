@@ -20,6 +20,7 @@ const PlayerControls = ({ player }) => {
       track: currentlyPlaying.item,
       isPlaying: currentlyPlaying.is_playing,
     });
+    setProgress(0);
   };
 
   useEffect(() => {
