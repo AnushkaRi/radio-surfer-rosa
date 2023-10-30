@@ -9,17 +9,20 @@ This project is still ongoing and currently available in desktop version.
 ## Home Page
 Home page with selected Top Artists and Top Tracks.
 
-![home](https://github.com/AnushkaRi/radio-surfer-rosa/assets/93154379/e6c2b086-555d-40dd-be39-d34460a02fd4)
+![home](https://github.com/AnushkaRi/radio-surfer-rosa/assets/93154379/2c25a457-4463-4e3a-a4d7-6ba19905c7d5)
+
 
 ## Search Page
 Search music by different subjects: artist, album, or track name.
 
-![Search](https://github.com/AnushkaRi/radio-surfer-rosa/assets/93154379/a25bcf5f-73bc-493d-9770-60d4fc1b3cd8)
+![Search](https://github.com/AnushkaRi/radio-surfer-rosa/assets/93154379/10cffab5-fbd6-4c39-bcc0-d36ac8e3b0bb)
+
 
 ## Playlist Page
 Showing your Spotify Playlists.
 
-![playlist](https://github.com/AnushkaRi/radio-surfer-rosa/assets/93154379/5980ec22-bab0-49c7-920e-93f8af706b7c)
+![playlist](https://github.com/AnushkaRi/radio-surfer-rosa/assets/93154379/fda61f7e-8a2f-44de-af1c-8b05d2a7f656)
+
 
 ## Installation
 1. Clone this repo
